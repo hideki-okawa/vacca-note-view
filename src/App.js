@@ -8,8 +8,9 @@ function App() {
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    let api = "http://localhost:8080/";
+    let api = process.env.REACT_APP_SERVER_API;
     const fetchData = async () => {
+      console.log(api)
       const response = await axios(api);
       console.log(response)
       setComment(response.data);
