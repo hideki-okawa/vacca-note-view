@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
+import Header from "~/components/uiParts/header/index.js";
 
 import axios from "axios";
 
@@ -19,16 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {comment}
-        </a>
-      </header>
+      <Header />
     </div>
   );
 }
