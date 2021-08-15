@@ -1,4 +1,10 @@
 .top-view-left {
+	&-content {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 	&-character {
 		width: 80%;
 	}

@@ -6,11 +6,13 @@ import { Image } from "semantic-ui-react";
 
 const TopViewLeftContent = () => {
 	return (
-		<Image
-			src={character}
-			className="top-view-left-character"
-			alt="character"
-		/>
+		<div className="top-view-left-content">
+			<Image
+				src={character}
+				className="top-view-left-character"
+				alt="character"
+			/>
+		</div>
 	);
 };
 
