@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="493.993" height="118.331" viewBox="0 0 493.993 118.331">
+  <g id="グループ_612" data-name="グループ 612" transform="translate(-767.563 -257.613)">
+    <text id="Vacca_note" data-name="Vacca note" transform="matrix(1, 0.017, -0.017, 1, 768.122, 336.601)" fill="#00bfa6" font-size="111" font-family="SanvitoPro-BoldDisp, Sanvito Pro" font-weight="700"><tspan x="0" y="0">Vacca note</tspan></text>
+    <g id="グループ_602" data-name="グループ 602" transform="translate(851.202 124.115) rotate(43)">
+      <g id="グループ_2" data-name="グループ 2" transform="translate(-0.995 -7.054) rotate(1)">
+        <rect id="長方形_9" data-name="長方形 9" width="16.903" height="3" transform="translate(392.772 -148.365) rotate(90)" fill="#00bfa6"/>
+        <rect id="長方形_10" data-name="長方形 10" width="14.847" height="3" transform="translate(412.173 -147.337) rotate(90)" fill="#00bfa6"/>
+        <path id="パス_1" data-name="パス 1" d="M4.838.863,44.288,0c2.642-.058,4.761,1.447,4.732,3.362s-2.2,3.513-4.837,3.571L4.732,7.8C2.09,7.853-.029,6.348,0,4.434S2.2.921,4.838.863Z" transform="translate(377.365 -133.953) rotate(1)" fill="#00bfa6"/>
+        <path id="パス_2" data-name="パス 2" d="M3.253.991,32.161,0c1.774-.061,3.194.96,3.172,2.28s-1.479,2.439-3.253,2.5L3.172,5.771C1.4,5.832-.022,4.811,0,3.491S1.479,1.052,3.253.991Z" transform="translate(383.501 -151.757) rotate(1)" fill="#00bfa6"/>
+        <path id="パス_3" data-name="パス 3" d="M2.9.74,28.695,0c1.583-.045,2.85.716,2.83,1.7s-1.319,1.82-2.9,1.865L2.83,4.307C1.247,4.352-.02,3.59,0,2.605S1.32.785,2.9.74Z" transform="translate(387.273 -101.623) rotate(1)" fill="#00bfa6"/>
+        <rect id="長方形_20" data-name="長方形 20" width="8.13" height="3.016" rx="1.508" transform="translate(404.055 -120.885) rotate(3)" fill="#00bfa6"/>
+        <rect id="長方形_23" data-name="長方形 23" width="8.945" height="6" transform="translate(405.055 -99.125) rotate(90)" fill="#00bfa6"/>
+        <rect id="長方形_24" data-name="長方形 24" width="17.699" height="3.115" transform="translate(403.846 -90.104) rotate(90)" fill="#00bfa6"/>
+        <rect id="長方形_25" data-name="長方形 25" width="30.831" height="3.709" rx="1.855" transform="translate(414.717 -98.52) rotate(-91)" fill="#00bfa6"/>
+        <rect id="長方形_26" data-name="長方形 26" width="30.831" height="3.709" rx="1.855" transform="translate(387.564 -99.15) rotate(-91)" fill="#00bfa6"/>
+        <rect id="長方形_27" data-name="長方形 27" width="8.13" height="3.016" rx="1.508" transform="translate(404.055 -114.596) rotate(3)" fill="#00bfa6"/>
+        <rect id="長方形_28" data-name="長方形 28" width="8.13" height="3.016" rx="1.508" transform="translate(404.055 -108.306) rotate(3)" fill="#00bfa6"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -2,14 +2,14 @@ import React from "react";
 import "./index.scss";
 import logo from "~/img/vacca-note-logo.svg";
 
-import { Icon, Grid } from "semantic-ui-react";
+import { Icon, Grid, Image } from "semantic-ui-react";
 
 const Header = () => {
 	return (
-		<header>
+		<header className="header">
 			<Grid>
 				<Grid.Column width={9}>
-					<img src={logo} className="title-logo" alt="logo" />
+					<Image src={logo} className="title-logo" alt="logo" />
 				</Grid.Column>
 				<Grid.Column
 					floated="right"
