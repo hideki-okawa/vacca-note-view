@@ -1,0 +1,16 @@
+html,
+body {
+	background-color: #f8f7f2 !important;
+}
+
+.App {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.title {
+	&-header {
+		margin-top: 3%;
+	}
+}
