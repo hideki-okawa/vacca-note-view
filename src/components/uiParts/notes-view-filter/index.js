@@ -7,7 +7,12 @@ const NotesViewFilter = () => {
 	return (
 		<div className="notes-view-filter">
 			<div className="notes-view-filter-content">
-				<Header as="h3">絞り込み</Header>
+				<div className="notes-view-filter-content-list-header">
+					<Header as="h2">絞り込み機能　coming soon...</Header>
+				</div>
+				{/* <div className="notes-view-filter-content-list-gender">
+					<Header as="h3">性別</Header>
+				</div> */}
 			</div>
 		</div>
 	);

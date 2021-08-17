@@ -4,10 +4,16 @@
 	background-color: #f0f0f0;
 	margin: 0 auto;
 	border-radius: 30px;
-	&-content {
-		padding-top: 10%;
-		height: 90%;
-		width: 80%;
-		margin: 0 auto;
-	}
 }
+
+.notes-view-filter-content {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 15%;
+}
+
+// .notes-view-filter-content-list {
+// 	&-gender {
+// 		margin-top: 10%;
+// 	}
+// }
