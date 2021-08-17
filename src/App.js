@@ -22,7 +22,9 @@ const App = () => {
 			<div className="title-header">
 				<Header />
 			</div>
-			<Top />
+			<div className="main-content">
+				<Top />
+			</div>
 		</div>
 	);
 };
