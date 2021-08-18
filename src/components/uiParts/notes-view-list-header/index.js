@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Header, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 import PostButton from "../post-button";
 
