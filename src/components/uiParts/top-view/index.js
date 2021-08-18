@@ -7,16 +7,14 @@ import { Grid } from "semantic-ui-react";
 
 const TopView = () => {
 	return (
-		<div>
-			<Grid centered className="top-view-content-grid">
-				<Grid.Column width={8} textAlign="center">
-					<TopViewLeftContent />
-				</Grid.Column>
-				<Grid.Column width={8} className="top-view-content-grid-right">
-					<TopViewRightContent />
-				</Grid.Column>
-			</Grid>
-		</div>
+		<Grid className="top-view-content-grid">
+			<Grid.Column width={8}>
+				<TopViewLeftContent />
+			</Grid.Column>
+			<Grid.Column width={8} className="top-view-content-grid-right">
+				<TopViewRightContent />
+			</Grid.Column>
+		</Grid>
 	);
 };
 
