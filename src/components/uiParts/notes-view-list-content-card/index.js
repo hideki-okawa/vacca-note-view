@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import man from "~/img/user-man.png";
 import woman from "~/img/user-woman.png";
 
@@ -89,7 +89,11 @@ const setVaccineType = (vaccineTypeSymbol) => {
 };
 
 const setNumberOfVaccination = (numberOfVaccinationNum) => {
-	return numberOfVaccinationNum + "回目";
+	if (Number.isInteger(numberOfVaccinationNum)) {
+		return numberOfVaccinationNum + "回目";
+	} else {
+		return "回数不明";
+	}
 };
 
 const setMaxTemperature = (maxTemperatureNum) => {
