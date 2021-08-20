@@ -4,6 +4,7 @@ import { Button, Header, Image, Modal } from "semantic-ui-react";
 const NoteForm = (props) => {
 	return (
 		<Modal
+			closeIcon
 			onClose={() => props.setOpenModal(false)}
 			onOpen={() => props.setOpenModal(true)}
 			open={props.openModal}
