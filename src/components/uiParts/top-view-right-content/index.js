@@ -5,7 +5,7 @@ import logo from "~/img/vacca-note-logo-green.svg";
 import { Image, Header } from "semantic-ui-react";
 import PostButton from "../post-button";
 
-const TopViewRightContent = () => {
+const TopViewRightContent = (props) => {
 	return (
 		<div className="top-view-right-content">
 			<Image
@@ -16,7 +16,7 @@ const TopViewRightContent = () => {
 			/>
 			<Header as="h2" content="ワクチンの接種体験を共有しよう。" />
 			<div className="top-view-right-button">
-				<PostButton />
+				<PostButton setOpenModal={props.setOpenModal} />
 			</div>
 		</div>
 	);

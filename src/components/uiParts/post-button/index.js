@@ -1,9 +1,16 @@
 import React from "react";
 import "./index.scss";
 
-const PostButton = () => {
+const PostButton = (props) => {
 	return (
-		<a href="#!" class="post-button">
+		<a
+			href="#!"
+			className="post-button"
+			onClick={() => {
+				console.log("post button on click!");
+				props.setOpenModal(true);
+			}}
+		>
 			<h2>接種体験を共有する &gt;</h2>
 		</a>
 	);

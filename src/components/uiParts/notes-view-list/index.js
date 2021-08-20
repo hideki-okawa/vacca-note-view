@@ -5,7 +5,7 @@ import NotesViewListContent from "~/components/uiParts/notes-view-list-content/i
 
 const NotesViewList = () => {
 	return (
-		<div classNmae="notes-view-list">
+		<div>
 			<NotesViewListHeader />
 			<div className="notes-view-list-content">
 				<NotesViewListContent />
