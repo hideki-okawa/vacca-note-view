@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NoteForm from "~/components/uiParts/note-form/index.js";
+import NoteModal from "~/components/uiParts/note-modal/index.js";
 import TopView from "~/components/uiParts/top-view/index.js";
 import NotesView from "~/components/uiParts/notes-view/index.js";
 
@@ -8,7 +8,7 @@ const Top = () => {
 
 	return (
 		<div>
-			<NoteForm openModal={openModal} setOpenModal={setOpenModal} />
+			<NoteModal openModal={openModal} setOpenModal={setOpenModal} />
 			<TopView setOpenModal={setOpenModal} />
 			<NotesView setOpenModal={setOpenModal} />
 		</div>
