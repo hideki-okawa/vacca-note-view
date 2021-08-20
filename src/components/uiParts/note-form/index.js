@@ -12,7 +12,7 @@ const NoteForm = (props) => {
 			open={props.openModal}
 		>
 			<Modal.Header>
-				<SubTitle title={"ワクチン接種体験入力フォーム"} />
+				<SubTitle title={"ワクチン接種体験を共有する"} size={"h3"} />
 			</Modal.Header>
 			<Modal.Content image>
 				{/* <Image
