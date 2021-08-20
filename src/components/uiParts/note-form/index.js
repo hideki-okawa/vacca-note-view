@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
+import SubTitle from "~/components/uiParts/sub-title/index.js";
+
+import { Button, Modal } from "semantic-ui-react";
 
 const NoteForm = (props) => {
 	return (
@@ -9,9 +11,11 @@ const NoteForm = (props) => {
 			onOpen={() => props.setOpenModal(true)}
 			open={props.openModal}
 		>
-			<Modal.Header>Select a Photo</Modal.Header>
+			<Modal.Header>
+				<SubTitle title={"ワクチン接種体験入力フォーム"} />
+			</Modal.Header>
 			<Modal.Content image>
-				<Image
+				{/* <Image
 					size="medium"
 					src="https://react.semantic-ui.com/images/avatar/large/rachel.png"
 					wrapped
@@ -23,7 +27,7 @@ const NoteForm = (props) => {
 						address.
 					</p>
 					<p>Is it okay to use this photo?</p>
-				</Modal.Description>
+				</Modal.Description> */}
 			</Modal.Content>
 			<Modal.Actions>
 				<Button color="black" onClick={() => props.setOpenModal(false)}>
