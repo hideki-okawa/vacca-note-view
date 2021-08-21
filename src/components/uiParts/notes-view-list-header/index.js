@@ -1,15 +1,15 @@
 import React from "react";
-import "./index.scss";
 import { Grid } from "semantic-ui-react";
 
-import PostButton from "../post-button";
+import PostButton from "~/components/uiParts/post-button/index.js";
+import SubTitle from "~/components/uiParts/sub-title/index.js";
 
 const NotesViewListHeader = () => {
 	return (
 		<header>
 			<Grid>
 				<Grid.Column width={8} verticalAlign="middle">
-					<h1 className="notes-view-list-header">ワクチン接種体験</h1>
+					<SubTitle title={"ワクチン接種体験"} />
 				</Grid.Column>
 				<Grid.Column textAlign="right" width={8} verticalAlign="middle">
 					<PostButton />

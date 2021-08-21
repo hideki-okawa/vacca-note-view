@@ -5,14 +5,14 @@ import TopViewRightContent from "~/components/uiParts/top-view-right-content/ind
 
 import { Grid } from "semantic-ui-react";
 
-const TopView = () => {
+const TopView = (props) => {
 	return (
 		<Grid className="top-view-content-grid">
 			<Grid.Column width={8}>
 				<TopViewLeftContent />
 			</Grid.Column>
 			<Grid.Column width={8} className="top-view-content-grid-right">
-				<TopViewRightContent />
+				<TopViewRightContent setOpenModal={props.setOpenModal} />
 			</Grid.Column>
 		</Grid>
 	);
