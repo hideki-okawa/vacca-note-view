@@ -45,6 +45,11 @@ const NoteModal = (props) => {
 		setMaxTemperature(value);
 	};
 
+	// 回数の更新
+	const handleChangeNumberOfVaccination = (e, { value }) => {
+		setNumberOfVaccination(value);
+	};
+
 	// 接種体験の更新
 	const handleChangeLog = (e) => {
 		// if (e.target.value.length > 1000) {
@@ -188,6 +193,22 @@ const NoteModal = (props) => {
 							value="A"
 							checked={vaccineType === "A"}
 							onChange={handleChangeVaccineType}
+						/>
+					</Form.Group>
+					{/* 回数の入力 */}
+					<Form.Group inline>
+						<label>接種回数</label>
+						<Form.Radio
+							label="1回目"
+							value={1}
+							checked={numberOfVaccination === 1}
+							onChange={handleChangeNumberOfVaccination}
+						/>
+						<Form.Radio
+							label="2回目"
+							value={2}
+							checked={numberOfVaccination === 2}
+							onChange={handleChangeNumberOfVaccination}
 						/>
 					</Form.Group>
 					{/* 最高体温の入力 */}
