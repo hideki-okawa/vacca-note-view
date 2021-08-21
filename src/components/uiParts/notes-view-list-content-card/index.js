@@ -100,33 +100,36 @@ const setMaxTemperature = (maxTemperatureNum) => {
 	let maxTemperature;
 	switch (maxTemperatureNum) {
 		case "1":
-			maxTemperature = "36.9度以下";
+			maxTemperature = "36.9℃以下";
 			break;
 		case "2":
-			maxTemperature = "37.0~37.4";
+			maxTemperature = "37.0~37.4℃";
 			break;
 		case "3":
-			maxTemperature = "37.5~37.9";
+			maxTemperature = "37.5~37.9℃";
 			break;
 		case "4":
-			maxTemperature = "38.0~38.4";
+			maxTemperature = "38.0~38.4℃";
 			break;
 		case "5":
-			maxTemperature = "38.5~38.9";
+			maxTemperature = "38.5~38.9℃";
 			break;
 		case "6":
-			maxTemperature = "39.0~39.4";
+			maxTemperature = "39.0~39.4℃";
 			break;
 		case "7":
-			maxTemperature = "39.5~39.9";
+			maxTemperature = "39.5~39.9℃";
 			break;
 		case "8":
-			maxTemperature = "40度以上";
+			maxTemperature = "40℃以上";
+			break;
+		case "10":
+			maxTemperature = "発熱なしのため未検温";
 			break;
 		default:
 			maxTemperature = "不明";
 	}
-	return maxTemperature + "℃";
+	return maxTemperature;
 };
 
 const NotesViewListContentCard = (props) => {

@@ -7,7 +7,6 @@ const PostButton = (props) => {
 			href="#!"
 			className="post-button"
 			onClick={() => {
-				console.log("post button on click!");
 				props.setOpenModal(true);
 			}}
 		>
