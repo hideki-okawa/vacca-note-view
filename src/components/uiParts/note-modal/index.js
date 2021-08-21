@@ -230,8 +230,6 @@ const NoteModal = (props) => {
 					positive
 				/>
 			</Modal.Actions>
-			{name}
-			{log}
 		</Modal>
 	);
 };
