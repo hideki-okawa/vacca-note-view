@@ -149,9 +149,21 @@ const NotesViewListContentCard = (props) => {
 					</Header.Content>
 				</Header>
 				<Header as="h4">経過レポート:</Header>
-				<p className="note-paragraph">{note.log}</p>
+				<p>
+					{note.log.split("\n").map((str, index) => (
+						<React.Fragment key={index}>
+							{str}
+							<br />
+						</React.Fragment>
+					))}
+				</p>
 				<Header as="h4">コメント:</Header>
-				<p className="note-paragraph">{note.remarks}</p>
+				{note.remarks.split("\n").map((str, index) => (
+					<React.Fragment key={index}>
+						{str}
+						<br />
+					</React.Fragment>
+				))}
 			</Segment>
 		</Grid.Column>
 	);
