@@ -148,7 +148,10 @@ const NotesViewListContentCard = (props) => {
 						)}/${setMaxTemperature(note.max_temperature)}`}
 					</Header.Content>
 				</Header>
+				<Header as="h4">経過レポート:</Header>
 				<p className="note-paragraph">{note.log}</p>
+				<Header as="h4">コメント:</Header>
+				<p className="note-paragraph">{note.remarks}</p>
 			</Segment>
 		</Grid.Column>
 	);
