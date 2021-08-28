@@ -1,6 +1,7 @@
 import React from "react";
 import man from "~/img/user-man.png";
 import woman from "~/img/user-woman.png";
+import SeeNextButton from "~/components/uiParts/see-next-button/index.js";
 
 import { Grid, Segment, Header, Image } from "semantic-ui-react";
 
@@ -148,7 +149,23 @@ const NotesViewListContentCard = (props) => {
 						)}/${setMaxTemperature(note.max_temperature)}`}
 					</Header.Content>
 				</Header>
-				<p className="note-paragraph">{note.log}</p>
+				<Header as="h4">経過レポート:</Header>
+				<p>
+					{note.log.split("\n").map((str, index) => (
+						<React.Fragment key={index}>
+							{str}
+							<br />
+						</React.Fragment>
+					))}
+				</p>
+				<Header as="h4">コメント:</Header>
+				{note.remarks.split("\n").map((str, index) => (
+					<React.Fragment key={index}>
+						{str}
+						<br />
+					</React.Fragment>
+				))}
+				<SeeNextButton />
 			</Segment>
 		</Grid.Column>
 	);

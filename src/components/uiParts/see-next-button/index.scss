@@ -1,4 +1,4 @@
-.post-button {
+.see-next-button {
 	display: inline-block;
 	padding: 0.4em 1.6em;
 	font-size: 0.8em;
@@ -8,9 +8,10 @@
 	border: 1px #00bfa6 solid;
 	border-radius: 8px;
 	transition: 0.4s ease;
+	margin-top: 2%;
 }
 
-.post-button:hover {
+.see-next-button:hover {
 	color: #fff;
 	background: #00bfa6;
 }
