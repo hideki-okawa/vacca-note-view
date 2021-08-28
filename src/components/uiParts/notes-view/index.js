@@ -5,7 +5,7 @@ import NotesViewList from "~/components/uiParts/notes-view-list/index.js";
 
 import { Grid } from "semantic-ui-react";
 
-const NotesView = () => {
+const NotesView = (props) => {
 	return (
 		<div className="notes-view">
 			<Grid centered>
@@ -13,7 +13,7 @@ const NotesView = () => {
 					<NotesViewFilter />
 				</Grid.Column>
 				<Grid.Column width={12}>
-					<NotesViewList />
+					<NotesViewList setOpenModal={props.setOpenModal} />
 				</Grid.Column>
 			</Grid>
 		</div>

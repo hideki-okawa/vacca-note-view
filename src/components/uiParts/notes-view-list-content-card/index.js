@@ -1,6 +1,7 @@
 import React from "react";
 import man from "~/img/user-man.png";
 import woman from "~/img/user-woman.png";
+import SeeNextButton from "~/components/uiParts/see-next-button/index.js";
 
 import { Grid, Segment, Header, Image } from "semantic-ui-react";
 
@@ -164,6 +165,7 @@ const NotesViewListContentCard = (props) => {
 						<br />
 					</React.Fragment>
 				))}
+				<SeeNextButton />
 			</Segment>
 		</Grid.Column>
 	);
