@@ -5,7 +5,7 @@ import NotesViewListContentCard from "~/components/uiParts/notes-view-list-conte
 import { Grid } from "semantic-ui-react";
 import axios from "axios";
 
-const NotesViewListContent = () => {
+const NotesViewListContent = (props) => {
 	const [notes, setNotes] = useState([]);
 
 	useEffect(() => {
@@ -13,6 +13,7 @@ const NotesViewListContent = () => {
 		const fetchData = async () => {
 			const response = await axios(api);
 			setNotes(response.data);
+			props.setNotesCount(response.data.length);
 		};
 		fetchData();
 	}, []);

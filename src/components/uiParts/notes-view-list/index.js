@@ -8,7 +8,7 @@ const NotesViewList = (props) => {
 		<div>
 			<NotesViewListHeader setOpenModal={props.setOpenModal} />
 			<div className="notes-view-list-content">
-				<NotesViewListContent />
+				<NotesViewListContent setNotesCount={props.setNotesCount} />
 			</div>
 		</div>
 	);
