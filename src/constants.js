@@ -4,7 +4,6 @@ export const GENDER_TYPE = {
 };
 
 export const AGE_TYPE = {
-	0: "年齢不明", // あってるっけ
 	1: "10代以下",
 	2: "20代",
 	3: "30代",
@@ -20,13 +19,11 @@ export const VACCINE_TYPE = {
 	M: "モデルナ",
 	F: "ファイザー",
 	A: "アストラゼネカ",
-	"": "ワクチン種不明", // その他って何だっけ
 };
 
 export const NUMBER_OF_VACCINATION = {
 	1: "1回目",
 	2: "2回目",
-	"": "回数不明", // その他って何だっけ
 };
 
 export const MAX_TEMPERATURE = {
@@ -39,5 +36,4 @@ export const MAX_TEMPERATURE = {
 	7: "39.5~39.9℃",
 	8: "40℃以上",
 	10: "発熱なしのため未検温",
-	"": "不明",
 };
