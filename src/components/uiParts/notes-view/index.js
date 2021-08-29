@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.scss";
-import NotesViewFilter from "~/components/uiParts/notes-view-filter/index.js";
+// import NotesViewFilter from "~/components/uiParts/notes-view-filter/index.js";
 import NotesViewList from "~/components/uiParts/notes-view-list/index.js";
 import NotesViewCount from "~/components/uiParts/notes-view-count/index.js";
 
@@ -14,7 +14,7 @@ const NotesView = (props) => {
 			<Grid centered>
 				<Grid.Column textAlign width={4}>
 					<NotesViewCount notesCount={notesCount} />
-					<NotesViewFilter />
+					{/* <NotesViewFilter /> */}
 				</Grid.Column>
 				<Grid.Column width={12}>
 					<NotesViewList
