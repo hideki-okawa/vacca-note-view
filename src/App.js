@@ -15,7 +15,7 @@ const App = () => {
 			<div className="main-content">
 				<BrowserRouter>
 					<Route exact path="/" component={Top} />
-					<Route path="/note" component={Detail} />
+					<Route path="/note/:id" component={Detail} />
 				</BrowserRouter>
 			</div>
 		</div>

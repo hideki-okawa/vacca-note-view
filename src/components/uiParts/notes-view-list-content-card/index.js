@@ -165,7 +165,7 @@ const NotesViewListContentCard = (props) => {
 						<br />
 					</React.Fragment>
 				))}
-				<SeeNextButton />
+				<SeeNextButton ID={note.id} />
 			</Segment>
 		</Grid.Column>
 	);
