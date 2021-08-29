@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import logo from "~/img/vacca-note-logo-green.svg";
+import logo from "~/img/vacca-note-logo-green.png";
 
 import { Image, Header } from "semantic-ui-react";
 import PostButton from "../post-button";
