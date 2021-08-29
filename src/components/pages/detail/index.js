@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SubTitle from "~/components/uiParts/sub-title/index.js";
+import * as constants from "~/constants.js";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -45,15 +46,15 @@ const Detail = () => {
 		<div>
 			<SubTitle title={`${note.name}さんのワクチン接種体験`} size={"h1"} />
 			<Header as="h3">性別:</Header>
-			<p>{note.gender}</p>
+			<p>{constants.GENDER_TYPE[note.gender]}</p>
 			<Header as="h3">年齢:</Header>
-			<p>{note.age}</p>
+			<p>{constants.AGE_TYPE[note.age]}</p>
 			<Header as="h3">ワクチンの種類:</Header>
-			<p>{note.vaccine_type}</p>
+			<p>{constants.VACCINE_TYPE[note.vaccine_type]}</p>
 			<Header as="h3">接種回数:</Header>
-			<p>{note.number_of_vaccination}</p>
+			<p>{constants.NUMBER_OF_VACCINATION[note.number_of_vaccination]}</p>
 			<Header as="h3">最高体温:</Header>
-			<p>{note.max_temperature}</p>
+			<p>{constants.MAX_TEMPERATURE[note.max_temperature]}</p>
 			<Header as="h3">経過レポート:</Header>
 			<p>{log}</p>
 			<Header as="h3">コメント:</Header>
