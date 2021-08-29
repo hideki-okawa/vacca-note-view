@@ -3,13 +3,16 @@ import "./index.scss";
 import logo from "~/img/vacca-note-logo.svg";
 
 import { Icon, Grid, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
 		<header className="header">
 			<Grid>
 				<Grid.Column width={9}>
-					<Image src={logo} className="title-logo" alt="logo" />
+					<Link to="/">
+						<Image src={logo} className="title-logo" alt="logo" />
+					</Link>
 				</Grid.Column>
 				<Grid.Column
 					floated="right"

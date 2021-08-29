@@ -3,12 +3,14 @@ import SubTitle from "~/components/uiParts/sub-title/index.js";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Header } from "semantic-ui-react";
 
 const Detail = () => {
 	const [note, setNote] = useState({});
 	const { id } = useParams();
 
 	useEffect(() => {
+		console.log("run useeffect");
 		const api = process.env.REACT_APP_SERVER_API + "/note/" + id;
 		console.log(api);
 		const fetchData = async () => {
@@ -19,9 +21,43 @@ const Detail = () => {
 		console.log(note);
 	}, []);
 
+	let log;
+	if (note.log !== undefined) {
+		log = note.log.split("\n").map((str, index) => (
+			<React.Fragment key={index}>
+				{str}
+				<br />
+			</React.Fragment>
+		));
+	}
+
+	let remarks;
+	if (note.remarks !== undefined) {
+		remarks = note.remarks.split("\n").map((str, index) => (
+			<React.Fragment key={index}>
+				{str}
+				<br />
+			</React.Fragment>
+		));
+	}
+
 	return (
 		<div>
 			<SubTitle title={`${note.name}さんのワクチン接種体験`} size={"h1"} />
+			<Header as="h3">性別:</Header>
+			<p>{note.gender}</p>
+			<Header as="h3">年齢:</Header>
+			<p>{note.age}</p>
+			<Header as="h3">ワクチンの種類:</Header>
+			<p>{note.vaccine_type}</p>
+			<Header as="h3">接種回数:</Header>
+			<p>{note.number_of_vaccination}</p>
+			<Header as="h3">最高体温:</Header>
+			<p>{note.max_temperature}</p>
+			<Header as="h3">経過レポート:</Header>
+			<p>{log}</p>
+			<Header as="h3">コメント:</Header>
+			<p>{remarks}</p>
 		</div>
 	);
 };

@@ -8,17 +8,17 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 const App = () => {
 	return (
-		<div className="App">
-			<div className="title-header">
-				<Header />
-			</div>
-			<div className="main-content">
-				<BrowserRouter>
+		<BrowserRouter>
+			<div className="App">
+				<div className="title-header">
+					<Header />
+				</div>
+				<div className="main-content">
 					<Route exact path="/" component={Top} />
 					<Route path="/note/:id" component={Detail} />
-				</BrowserRouter>
+				</div>
 			</div>
-		</div>
+		</BrowserRouter>
 	);
 };
 
