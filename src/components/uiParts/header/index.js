@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import logo from "~/img/vacca-note-logo.svg";
+import logo from "~/img/vacca-note-logo.png";
 
 import { Icon, Grid, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
