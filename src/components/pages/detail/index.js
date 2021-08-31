@@ -5,6 +5,12 @@ import * as constants from "~/constants.js";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Header } from "semantic-ui-react";
+import {
+	FacebookShareButton,
+	FacebookIcon,
+	TwitterShareButton,
+	TwitterIcon,
+} from "react-share";
 
 const Detail = () => {
 	const [note, setNote] = useState({});
@@ -79,6 +85,12 @@ const Detail = () => {
 			<p>{log}</p>
 			<Header as="h3">コメント:</Header>
 			<p>{remarks}</p>
+			<FacebookShareButton url={["https://vacca-note.com/"]} quote={["テスト"]}>
+				<FacebookIcon size={32} round />
+			</FacebookShareButton>
+			<TwitterShareButton url={["https://vacca-note.com/"]} title={["テスト"]}>
+				<TwitterIcon size={32} round />
+			</TwitterShareButton>
 		</div>
 	);
 };
