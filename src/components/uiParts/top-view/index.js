@@ -21,7 +21,7 @@ const TopView = (props) => {
 		</Grid>
 	);
 
-	const smpContent = <TopViewSMPContent />;
+	const smpContent = <TopViewSMPContent setOpenModal={props.setOpenModal} />;
 
 	return <div>{isWide ? pcContent : smpContent}</div>;
 };

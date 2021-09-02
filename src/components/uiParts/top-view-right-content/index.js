@@ -3,7 +3,7 @@ import "./index.scss";
 import logo from "~/img/vacca-note-logo-green.png";
 
 import { Image, Header } from "semantic-ui-react";
-import PostButton from "../post-button";
+import PostButton from "~/components/uiParts/post-button/index.js";
 
 const TopViewRightContent = (props) => {
 	return (
