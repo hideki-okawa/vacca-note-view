@@ -1,5 +1,17 @@
-.title {
-	&-logo {
-		width: 20%;
+.title-logo {
+	&-size {
+		width: 10vw;
+	}
+	&-smp-size {
+		width: 30vw;
+	}
+	&-position {
+		margin-left: 5vw;
+	}
+}
+
+.sidebar {
+	&-position {
+		margin-right: 5vw;
 	}
 }
