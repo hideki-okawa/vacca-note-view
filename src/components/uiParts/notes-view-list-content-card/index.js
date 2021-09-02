@@ -5,6 +5,7 @@ import SeeNextButton from "~/components/uiParts/see-next-button/index.js";
 import * as constants from "~/constants.js";
 
 import { Grid, Segment, Header, Image } from "semantic-ui-react";
+import useMedia from "use-media";
 
 const setGender = (genderNum) => {
 	if (constants.GENDER_TYPE[genderNum]) {
@@ -63,19 +64,25 @@ const setMaxTemperature = (maxTemperatureNum) => {
 
 const NotesViewListContentCard = (props) => {
 	let note = props.note;
+	const isWide = useMedia({ minWidth: "767px" });
 
 	return (
 		<Grid.Column>
 			<Segment raised>
-				<Header as="h3">
+				<Header as="h5">
 					<Image src={setImage(note.gender)} />
-					<Header.Content>
+					{/* <Header.Content>
 						{`${setGender(note.gender)}/${setAge(note.age)}/${setVaccineType(
 							note.vaccine_type
 						)}/${setNumberOfVaccination(
 							note.number_of_vaccination
 						)}/${setMaxTemperature(note.max_temperature)}`}
-					</Header.Content>
+					</Header.Content> */}
+					{`${setGender(note.gender)}/${setAge(note.age)}/${setVaccineType(
+						note.vaccine_type
+					)}/${setNumberOfVaccination(
+						note.number_of_vaccination
+					)}/${setMaxTemperature(note.max_temperature)}`}
 				</Header>
 				<Header as="h4">経過レポート:</Header>
 				<p>
