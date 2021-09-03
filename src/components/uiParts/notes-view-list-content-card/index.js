@@ -4,7 +4,7 @@ import woman from "~/img/user-woman.png";
 import SeeNextButton from "~/components/uiParts/see-next-button/index.js";
 import * as constants from "~/constants.js";
 
-import { Grid, Segment, Header, Image } from "semantic-ui-react";
+import { Header, Image, Card } from "semantic-ui-react";
 import useMedia from "use-media";
 
 const setGender = (genderNum) => {
@@ -67,8 +67,8 @@ const NotesViewListContentCard = (props) => {
 	const isWide = useMedia({ minWidth: "767px" });
 
 	return (
-		<Grid.Column>
-			<Segment raised>
+		<Card raised>
+			<Card.Content>
 				<Header as="h5">
 					<Image src={setImage(note.gender)} />
 					{/* <Header.Content>
@@ -101,8 +101,8 @@ const NotesViewListContentCard = (props) => {
 					</React.Fragment>
 				))}
 				<SeeNextButton ID={note.id} />
-			</Segment>
-		</Grid.Column>
+			</Card.Content>
+		</Card>
 	);
 };
 
