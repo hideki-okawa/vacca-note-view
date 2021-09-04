@@ -69,21 +69,20 @@ const NotesViewListContentCard = (props) => {
 	return (
 		<Card raised>
 			<Card.Content>
-				<Header as="h5">
+				<Header as="h3">
 					<Image src={setImage(note.gender)} />
-					{/* <Header.Content>
-						{`${setGender(note.gender)}/${setAge(note.age)}/${setVaccineType(
-							note.vaccine_type
-						)}/${setNumberOfVaccination(
-							note.number_of_vaccination
-						)}/${setMaxTemperature(note.max_temperature)}`}
-					</Header.Content> */}
+					<Header.Content>
+						{`${setAge(note.age)}${setGender(note.gender)}の接種体験`}
+					</Header.Content>
+				</Header>
+				<Header as="h4">回答者:</Header>
+				<p>
 					{`${setGender(note.gender)}/${setAge(note.age)}/${setVaccineType(
 						note.vaccine_type
 					)}/${setNumberOfVaccination(
 						note.number_of_vaccination
 					)}/${setMaxTemperature(note.max_temperature)}`}
-				</Header>
+				</p>
 				<Header as="h4">経過レポート:</Header>
 				<p>
 					{note.log.split("\n").map((str, index) => (
