@@ -11,16 +11,13 @@ const Detail = () => {
 	const { id } = useParams();
 
 	useEffect(() => {
-		console.log("run useeffect");
 		const api = process.env.REACT_APP_SERVER_API + "/note/" + id;
-		console.log(api);
 		const fetchData = async () => {
 			const response = await axios(api);
 			setNote(response.data);
 		};
 		fetchData();
-		console.log(note);
-	}, []);
+	}, [id]);
 
 	let log;
 	if (note.log !== undefined) {

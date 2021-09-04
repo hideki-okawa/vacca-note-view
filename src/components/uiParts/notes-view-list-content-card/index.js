@@ -5,7 +5,6 @@ import SeeNextButton from "~/components/uiParts/see-next-button/index.js";
 import * as constants from "~/constants.js";
 
 import { Header, Image, Card } from "semantic-ui-react";
-import useMedia from "use-media";
 
 const setGender = (genderNum) => {
 	if (constants.GENDER_TYPE[genderNum]) {
@@ -64,7 +63,6 @@ const setMaxTemperature = (maxTemperatureNum) => {
 
 const NotesViewListContentCard = (props) => {
 	let note = props.note;
-	const isWide = useMedia({ minWidth: "767px" });
 
 	return (
 		<Card raised>
