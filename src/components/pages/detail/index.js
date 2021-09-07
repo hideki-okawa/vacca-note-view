@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SubTitle from "~/components/uiParts/sub-title/index.js";
 import * as constants from "~/constants.js";
+import NoteHeader from "~/components/uiParts/note-header/index.js";
+import NoteContent from "~/components/uiParts/note-content/index.js";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Header } from "semantic-ui-react";
 
 const Detail = () => {
 	const [note, setNote] = useState({});
@@ -18,6 +18,32 @@ const Detail = () => {
 		};
 		fetchData();
 	}, [id]);
+
+	let gender;
+	constants.GENDER_TYPE[note.gender]
+		? (gender = constants.GENDER_TYPE[note.gender])
+		: (gender = "不明");
+
+	let age;
+	constants.AGE_TYPE[note.age]
+		? (age = constants.AGE_TYPE[note.age])
+		: (age = "不明");
+
+	let vaccineType;
+	constants.VACCINE_TYPE[note.vaccine_type]
+		? (vaccineType = constants.VACCINE_TYPE[note.vaccine_type])
+		: (vaccineType = "不明");
+
+	let numberOfVaccination;
+	constants.NUMBER_OF_VACCINATION[note.number_of_vaccination]
+		? (numberOfVaccination =
+				constants.NUMBER_OF_VACCINATION[note.number_of_vaccination])
+		: (numberOfVaccination = "不明");
+
+	let maxTemperature;
+	constants.MAX_TEMPERATURE[note.max_temperature]
+		? (maxTemperature = constants.MAX_TEMPERATURE[note.max_temperature])
+		: (maxTemperature = "不明");
 
 	let log;
 	if (note.log !== undefined) {
@@ -41,41 +67,15 @@ const Detail = () => {
 
 	return (
 		<div>
-			<SubTitle title={`${note.name}さんのワクチン接種体験`} size={"h1"} />
-			<Header as="h3">性別:</Header>
-			{constants.GENDER_TYPE[note.gender] ? (
-				<p>{constants.GENDER_TYPE[note.gender]}</p>
-			) : (
-				<p>不明</p>
-			)}
-			<Header as="h3">年齢:</Header>
-			{constants.AGE_TYPE[note.age] ? (
-				<p>{constants.AGE_TYPE[note.age]}</p>
-			) : (
-				<p>不明</p>
-			)}
-			<Header as="h3">ワクチンの種類:</Header>
-			{constants.VACCINE_TYPE[note.vaccine_type] ? (
-				<p>{constants.VACCINE_TYPE[note.vaccine_type]}</p>
-			) : (
-				<p>不明</p>
-			)}
-			<Header as="h3">接種回数:</Header>
-			{constants.NUMBER_OF_VACCINATION[note.number_of_vaccination] ? (
-				<p>{constants.NUMBER_OF_VACCINATION[note.number_of_vaccination]}</p>
-			) : (
-				<p>不明</p>
-			)}
-			<Header as="h3">最高体温:</Header>
-			{constants.MAX_TEMPERATURE[note.max_temperature] ? (
-				<p>{constants.MAX_TEMPERATURE[note.max_temperature]}</p>
-			) : (
-				<p>不明</p>
-			)}
-			<Header as="h3">経過レポート:</Header>
-			<p>{log}</p>
-			<Header as="h3">コメント:</Header>
-			<p>{remarks}</p>
+			<NoteHeader
+				age={age}
+				gender={gender}
+				name={note.name}
+				vaccineType={vaccineType}
+				numberOfVaccination={numberOfVaccination}
+				maxTemperature={maxTemperature}
+			/>
+			<NoteContent log={log} remarks={remarks} />
 		</div>
 	);
 };
