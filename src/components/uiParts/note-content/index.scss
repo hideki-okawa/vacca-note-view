@@ -5,7 +5,13 @@
 		padding: 2vw;
 	}
 	&-paragraph {
-		font-size: 1.2em;
-		line-height: 2em;
+		&-pc {
+			font-size: 1.2em;
+			line-height: 2em;
+		}
+		&-smp {
+			font-size: 1em;
+			line-height: 2em;
+		}
 	}
 }
