@@ -9,7 +9,7 @@ const NoteContent = (props) => {
 
 	return (
 		<div className="note-content-wrapper">
-			<Header as={isWide ? "h1" : "h2"} content="経過レポート" />
+			<Header as={isWide ? "h1" : "h3"} content="経過レポート" />
 			<p
 				className={
 					isWide ? "note-content-paragraph-pc" : "note-content-paragraph-smp"
@@ -17,7 +17,7 @@ const NoteContent = (props) => {
 			>
 				{props.log}
 			</p>
-			<Header as={isWide ? "h1" : "h2"} content="自由コメント" />
+			<Header as={isWide ? "h1" : "h3"} content="自由コメント" />
 			<p
 				className={
 					isWide ? "note-content-paragraph-pc" : "note-content-paragraph-smp"
