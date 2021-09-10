@@ -16,10 +16,9 @@ const NoteRecommend = (props) => {
 		const fetchData = async () => {
 			const response = await axios(api);
 			setRecommendNotes(response.data);
-			console.log("recommendNotes-deubg1", recommendNotes);
 		};
 		fetchData();
-	}, [props.age]);
+	}, [props]);
 
 	let noteRecommendNotes;
 	if (recommendNotes) {
@@ -43,8 +42,8 @@ const NoteRecommend = (props) => {
 					}
 				>
 					<Card.Group itemsPerRow={isWide ? 2 : 1}>
-						{recommendNotes.map((note) => {
-							return <NotesViewListContentCard note={note} />;
+						{recommendNotes.map((recomendNote) => {
+							return <NotesViewListContentCard note={recomendNote} />;
 						})}
 					</Card.Group>
 				</div>
