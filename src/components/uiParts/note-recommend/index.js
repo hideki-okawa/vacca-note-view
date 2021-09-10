@@ -25,13 +25,23 @@ const NoteRecommend = (props) => {
 	if (recommendNotes) {
 		noteRecommendNotes = (
 			<div>
-				<div className="note-recommend-header">
+				<div
+					className={
+						isWide ? "note-recommend-header-pc" : "note-recommend-header-smp"
+					}
+				>
 					<Header
 						as={isWide ? "h1" : "h3"}
 						content="あなたにおすすめの接種体験"
 					/>
 				</div>
-				<div className="note-recommend-notes">
+				<div
+					className={
+						isWide
+							? "note-recommend-notes note-recommend-pc"
+							: "note-recommend-notes"
+					}
+				>
 					<Card.Group itemsPerRow={isWide ? 2 : 1}>
 						{recommendNotes.map((note) => {
 							return <NotesViewListContentCard note={note} />;

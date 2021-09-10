@@ -1,10 +1,18 @@
 .note-recommend {
 	&-header {
-		margin-top: 3vw;
-		margin-bottom: 2vw;
+		&-pc {
+			margin-top: 3vw;
+			margin-bottom: 2vw;
+		}
+		&-smp {
+			margin-top: 8vw;
+			margin-bottom: 5vw;
+		}
 	}
 	&-notes {
-		width: 75%;
 		margin: 0 auto;
+	}
+	&-pc {
+		width: 75%;
 	}
 }
