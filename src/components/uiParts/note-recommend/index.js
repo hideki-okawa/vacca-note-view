@@ -11,7 +11,7 @@ const NoteRecommend = (props) => {
 	const isWide = useMedia({ minWidth: "767px" });
 
 	useEffect(() => {
-		const api = `${process.env.REACT_APP_SERVER_API}/notes/recommend?vaccine_type=${props.vaccineType}&number_of_vaccination=${props.numberOfVaccination}&age=${props.age}`;
+		const api = `${process.env.REACT_APP_SERVER_API}/notes/recommend?id=${props.id}&vaccine_type=${props.vaccineType}&number_of_vaccination=${props.numberOfVaccination}&age=${props.age}`;
 		console.log("api-debug", api);
 		const fetchData = async () => {
 			const response = await axios(api);

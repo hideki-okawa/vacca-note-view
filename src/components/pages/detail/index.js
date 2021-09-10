@@ -78,6 +78,7 @@ const Detail = () => {
 			/>
 			<NoteContent log={log} remarks={remarks} />
 			<NoteRecommend
+				id={id}
 				vaccineType={note.vaccine_type}
 				numberOfVaccination={note.number_of_vaccination}
 				age={note.age}
