@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as constants from "~/constants.js";
 import NoteHeader from "~/components/uiParts/note-header/index.js";
 import NoteContent from "~/components/uiParts/note-content/index.js";
+import NoteRecommend from "~/components/uiParts/note-recommend/index.js";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -76,6 +77,12 @@ const Detail = () => {
 				maxTemperature={maxTemperature}
 			/>
 			<NoteContent log={log} remarks={remarks} />
+			<NoteRecommend
+				id={id}
+				vaccineType={note.vaccine_type}
+				numberOfVaccination={note.number_of_vaccination}
+				age={note.age}
+			/>
 		</div>
 	);
 };
