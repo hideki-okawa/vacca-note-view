@@ -14,6 +14,7 @@ const NoteModal = (props) => {
 	const [maxTemperature, setMaxTemperature] = useState("1");
 	const [log, setLog] = useState("");
 	const [remarks, setRemarks] = useState("");
+	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 
 	// 名前のバリデーションと更新
 	const handleChangeName = (e) => {
@@ -90,9 +91,22 @@ const NoteModal = (props) => {
 
 		const api = process.env.REACT_APP_SERVER_API + "/note";
 		const postRequest = async () => {
+			let token;
+			if (jwt == null) {
+				const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
+				const response = await axios(jwtAPI);
+				setJWT(response.data.token);
+				token = response.data.token;
+				window.localStorage.setItem("jwt", token);
+			} else {
+				token = jwt;
+			}
+
 			// TODO: レスポンスの内容でバリデーションする
 			// const response = await axios.post(api, postData);
-			await axios.post(api, postData);
+			await axios.post(api, postData, {
+				headers: { Authorization: `Bearer ${token}` },
+			});
 		};
 		postRequest();
 	};
