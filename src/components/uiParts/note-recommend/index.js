@@ -8,13 +8,26 @@ import useMedia from "use-media";
 
 const NoteRecommend = (props) => {
 	const [recommendNotes, setRecommendNotes] = useState([]);
+	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 	const isWide = useMedia({ minWidth: "767px" });
 
 	useEffect(() => {
-		const api = `${process.env.REACT_APP_SERVER_API}/notes/recommend?id=${props.id}&vaccine_type=${props.vaccineType}&number_of_vaccination=${props.numberOfVaccination}&age=${props.age}`;
-		console.log("api-debug", api);
 		const fetchData = async () => {
-			const response = await axios(api);
+			let token;
+			if (jwt == null) {
+				const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
+				const response = await axios(jwtAPI);
+				setJWT(response.data.token);
+				token = response.data.token;
+				window.localStorage.setItem("jwt", token);
+			} else {
+				token = jwt;
+			}
+
+			const api = `${process.env.REACT_APP_SERVER_API}/notes/recommend?id=${props.id}&vaccine_type=${props.vaccineType}&number_of_vaccination=${props.numberOfVaccination}&age=${props.age}`;
+			const response = await axios.get(api, {
+				headers: { Authorization: `Bearer ${token}` },
+			});
 			setRecommendNotes(response.data);
 		};
 		fetchData();
