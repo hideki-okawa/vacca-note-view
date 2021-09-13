@@ -5,13 +5,11 @@ import NoteContent from "~/components/uiParts/note-content/index.js";
 import NoteRecommend from "~/components/uiParts/note-recommend/index.js";
 
 import axios from "axios";
-import { Dimmer, Loader } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 
 const Detail = () => {
 	const [note, setNote] = useState({});
 	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
-	const [loading, setLoading] = useState(true);
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -32,7 +30,6 @@ const Detail = () => {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			setNote(response.data);
-			setLoading(false);
 		};
 		fetchData();
 	}, [id]);
@@ -83,22 +80,8 @@ const Detail = () => {
 		));
 	}
 
-	let loader = (
-		<Dimmer active inverted>
-			<Loader>Loading</Loader>
-		</Dimmer>
-	);
-
-	let loadingComponent;
-	if (loading) {
-		loadingComponent = loader;
-	} else {
-		loadingComponent = null;
-	}
-
 	return (
 		<div>
-			{/* {loadingComponent} */}
 			<NoteHeader
 				age={age}
 				gender={gender}
