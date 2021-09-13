@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import NotesViewListContentCard from "~/components/uiParts/notes-view-list-content-card/index.js";
 
-import { Card, Header } from "semantic-ui-react";
+import { Card, Header, Dimmer, Loader } from "semantic-ui-react";
 import axios from "axios";
 import useMedia from "use-media";
 
 const NoteRecommend = (props) => {
 	const [recommendNotes, setRecommendNotes] = useState([]);
 	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
+	const [loading, setLoading] = useState(true);
 	const isWide = useMedia({ minWidth: "767px" });
 
 	useEffect(() => {
@@ -29,9 +30,23 @@ const NoteRecommend = (props) => {
 				headers: { Authorization: `Bearer ${token}` },
 			});
 			setRecommendNotes(response.data);
+			setLoading(false);
 		};
 		fetchData();
 	}, [props]);
+
+	let loader = (
+		<Dimmer active inverted>
+			<Loader>Loading</Loader>
+		</Dimmer>
+	);
+
+	let loadingComponent;
+	if (loading) {
+		loadingComponent = loader;
+	} else {
+		loadingComponent = null;
+	}
 
 	let noteRecommendNotes;
 	if (recommendNotes) {
@@ -64,7 +79,12 @@ const NoteRecommend = (props) => {
 		);
 	}
 
-	return <div>{noteRecommendNotes}</div>;
+	return (
+		<div>
+			{loadingComponent}
+			{noteRecommendNotes}
+		</div>
+	);
 };
 
 export default NoteRecommend;
