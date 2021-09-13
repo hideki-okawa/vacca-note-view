@@ -98,7 +98,7 @@ const Detail = () => {
 
 	return (
 		<div>
-			{loadingComponent}
+			{/* {loadingComponent} */}
 			<NoteHeader
 				age={age}
 				gender={gender}
