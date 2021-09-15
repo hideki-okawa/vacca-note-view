@@ -30,6 +30,7 @@ const NotesView = (props) => {
 		<NotesViewList
 			setOpenModal={props.setOpenModal}
 			setNotesCount={setNotesCount}
+			notesCount={notesCount}
 		/>
 	);
 

@@ -2,7 +2,7 @@ import React from "react";
 import PostButton from "~/components/uiParts/post-button/index.js";
 import SubTitle from "~/components/uiParts/sub-title/index.js";
 
-import { Grid } from "semantic-ui-react";
+import { Grid, Label } from "semantic-ui-react";
 import useMedia from "use-media";
 
 const NotesViewListHeader = (props) => {
@@ -19,7 +19,18 @@ const NotesViewListHeader = (props) => {
 		</Grid>
 	);
 
-	const smpContent = <SubTitle size="h2" title={"ワクチン接種体験"} />;
+	const smpContent = (
+		<Grid>
+			<Grid.Column width={12} verticalAlign="middle">
+				<SubTitle size="h2" title={"ワクチン接種体験"} />
+			</Grid.Column>
+			<Grid.Column width={4} verticalAlign="middle">
+				<Label circular color="teal" key="teal" size="large">
+					{props.notesCount}件
+				</Label>
+			</Grid.Column>
+		</Grid>
+	);
 
 	return <header>{isWide ? pcContent : smpContent}</header>;
 };
