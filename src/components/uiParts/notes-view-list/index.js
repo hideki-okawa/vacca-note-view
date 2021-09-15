@@ -6,7 +6,10 @@ import NotesViewListContent from "~/components/uiParts/notes-view-list-content/i
 const NotesViewList = (props) => {
 	return (
 		<div>
-			<NotesViewListHeader setOpenModal={props.setOpenModal} />
+			<NotesViewListHeader
+				setOpenModal={props.setOpenModal}
+				notesCount={props.notesCount}
+			/>
 			<div className="notes-view-list-content">
 				<NotesViewListContent setNotesCount={props.setNotesCount} />
 			</div>
