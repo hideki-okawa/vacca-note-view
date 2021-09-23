@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReturnOriginalNote from "~/common.js";
 
-import { Button, Modal, Table, Header } from "semantic-ui-react";
+import { Button, Modal, Table, Header, Message } from "semantic-ui-react";
 import axios from "axios";
 import useMedia from "use-media";
 
 const NoteCheckModal = (props) => {
 	const isWide = useMedia({ minWidth: "767px" });
+	const [isPostError, setIsPostError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 
 	let note = {
@@ -56,12 +58,30 @@ const NoteCheckModal = (props) => {
 
 			// TODO: レスポンスの内容でバリデーションする
 			// const response = await axios.post(api, postData);
-			await axios.post(api, postData, {
-				headers: { Authorization: `Bearer ${token}` },
-			});
+			await axios
+				.post(api, postData, {
+					headers: { Authorization: `Bearer ${token}` },
+				})
+				.then(function () {
+					props.setOpenCheckModal(false);
+					props.setOpenFormModal(false);
+				})
+				.catch(function (error) {
+					setErrorMessage(error.response.data);
+					setIsPostError(true);
+				});
 		};
 		postRequest();
 	};
+
+	let errorMessageBox;
+	if (isPostError) {
+		errorMessageBox = (
+			<Message error header="投稿に失敗しました。" content={errorMessage} />
+		);
+	} else {
+		errorMessageBox = <></>;
+	}
 
 	return (
 		<Modal
@@ -130,6 +150,12 @@ const NoteCheckModal = (props) => {
 						</Table.Row>
 					</Table.Body>
 				</Table>
+				{/* <Message
+					error
+					header="投稿に失敗しました。"
+					content="You can only sign up for an account once with a given e-mail address."
+				/> */}
+				{errorMessageBox}
 			</Modal.Content>
 			<Modal.Actions>
 				<Button color="gray" onClick={() => props.setOpenCheckModal(false)}>
@@ -141,8 +167,6 @@ const NoteCheckModal = (props) => {
 					icon="checkmark"
 					onClick={() => {
 						createNote();
-						props.setOpenCheckModal(false);
-						props.setOpenFormModal(false);
 					}}
 					positive
 				/>
