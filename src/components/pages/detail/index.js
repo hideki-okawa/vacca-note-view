@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import * as constants from "~/constants.js";
+// import * as constants from "~/constants.js";
+import ReturnOriginalNote from "~/common.js";
 import NoteHeader from "~/components/uiParts/note-header/index.js";
 import NoteContent from "~/components/uiParts/note-content/index.js";
 import NoteRecommend from "~/components/uiParts/note-recommend/index.js";
@@ -34,63 +35,19 @@ const Detail = () => {
 		fetchData();
 	}, [id]);
 
-	let gender;
-	constants.GENDER_TYPE[note.gender]
-		? (gender = constants.GENDER_TYPE[note.gender])
-		: (gender = "不明");
-
-	let age;
-	constants.AGE_TYPE[note.age]
-		? (age = constants.AGE_TYPE[note.age])
-		: (age = "不明");
-
-	let vaccineType;
-	constants.VACCINE_TYPE[note.vaccine_type]
-		? (vaccineType = constants.VACCINE_TYPE[note.vaccine_type])
-		: (vaccineType = "不明");
-
-	let numberOfVaccination;
-	constants.NUMBER_OF_VACCINATION[note.number_of_vaccination]
-		? (numberOfVaccination =
-				constants.NUMBER_OF_VACCINATION[note.number_of_vaccination])
-		: (numberOfVaccination = "不明");
-
-	let maxTemperature;
-	constants.MAX_TEMPERATURE[note.max_temperature]
-		? (maxTemperature = constants.MAX_TEMPERATURE[note.max_temperature])
-		: (maxTemperature = "不明");
-
-	let log;
-	if (note.log !== undefined) {
-		log = note.log.split("\n").map((str, index) => (
-			<React.Fragment key={index}>
-				{str}
-				<br />
-			</React.Fragment>
-		));
-	}
-
-	let remarks;
-	if (note.remarks !== undefined) {
-		remarks = note.remarks.split("\n").map((str, index) => (
-			<React.Fragment key={index}>
-				{str}
-				<br />
-			</React.Fragment>
-		));
-	}
+	let originalNote = ReturnOriginalNote(note);
 
 	return (
 		<div>
 			<NoteHeader
-				age={age}
-				gender={gender}
+				age={originalNote.age}
+				gender={originalNote.gender}
 				name={note.name}
-				vaccineType={vaccineType}
-				numberOfVaccination={numberOfVaccination}
-				maxTemperature={maxTemperature}
+				vaccineType={originalNote.vaccineType}
+				numberOfVaccination={originalNote.numberOfVaccination}
+				maxTemperature={originalNote.maxTemperature}
 			/>
-			<NoteContent log={log} remarks={remarks} />
+			<NoteContent log={originalNote.log} remarks={originalNote.remarks} />
 			<NoteRecommend
 				id={id}
 				vaccineType={note.vaccine_type}

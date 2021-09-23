@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SubTitle from "~/components/uiParts/sub-title/index.js";
+import NoteCheckModal from "~/components/uiParts/note-check-modal/index.js";
 
 import { Button, Modal, Form } from "semantic-ui-react";
 import axios from "axios";
@@ -255,16 +256,31 @@ const NoteFormModal = (props) => {
 					キャンセル
 				</Button>
 				<Button
-					content="接種体験を投稿する"
+					content="投稿内容を確認する"
 					labelPosition="right"
 					icon="checkmark"
 					onClick={() => {
-						createNote();
-						props.setOpenFormModal(false);
+						// createNote();
+						// props.setOpenFormModal(false);
+						props.setOpenCheckModal(true);
 					}}
 					positive
 				/>
 			</Modal.Actions>
+
+			<NoteCheckModal
+				openCheckModal={props.openCheckModal}
+				setOpenCheckModal={props.setOpenCheckModal}
+				name={name}
+				gender={gender}
+				age={age}
+				vaccineType={vaccineType}
+				numberOfVaccination={numberOfVaccination}
+				maxTemperature={maxTemperature}
+				log={log}
+				remarks={remarks}
+				jwt={jwt}
+			/>
 		</Modal>
 	);
 };
