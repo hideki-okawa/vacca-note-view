@@ -16,7 +16,7 @@ const TopViewRightContent = (props) => {
 			/>
 			<Header as="h2" content="ワクチンの接種体験を共有しよう。" />
 			<div className="top-view-right-button">
-				<PostButton setOpenModal={props.setOpenModal} />
+				<PostButton setOpenFormModal={props.setOpenFormModal} />
 			</div>
 		</div>
 	);

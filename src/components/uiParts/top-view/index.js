@@ -16,12 +16,14 @@ const TopView = (props) => {
 				<TopViewLeftContent />
 			</Grid.Column>
 			<Grid.Column width={8} className="top-view-content-grid-right">
-				<TopViewRightContent setOpenModal={props.setOpenModal} />
+				<TopViewRightContent setOpenFormModal={props.setOpenFormModal} />
 			</Grid.Column>
 		</Grid>
 	);
 
-	const smpContent = <TopViewSMPContent setOpenModal={props.setOpenModal} />;
+	const smpContent = (
+		<TopViewSMPContent setOpenFormModal={props.setOpenFormModal} />
+	);
 
 	return <div>{isWide ? pcContent : smpContent}</div>;
 };

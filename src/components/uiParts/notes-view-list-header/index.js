@@ -14,7 +14,7 @@ const NotesViewListHeader = (props) => {
 				<SubTitle title={"ワクチン接種体験"} />
 			</Grid.Column>
 			<Grid.Column textAlign="right" width={8} verticalAlign="middle">
-				<PostButton setOpenModal={props.setOpenModal} />
+				<PostButton setOpenFormModal={props.setOpenFormModal} />
 			</Grid.Column>
 		</Grid>
 	);

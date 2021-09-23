@@ -4,7 +4,7 @@ import SubTitle from "~/components/uiParts/sub-title/index.js";
 import { Button, Modal, Form } from "semantic-ui-react";
 import axios from "axios";
 
-const NoteModal = (props) => {
+const NoteFormModal = (props) => {
 	const [name, setName] = useState("");
 	const [nameError, setNameError] = useState(false);
 	const [gender, setGender] = useState("1");
@@ -139,9 +139,9 @@ const NoteModal = (props) => {
 	return (
 		<Modal
 			closeIcon
-			onClose={() => props.setOpenModal(false)}
-			onOpen={() => props.setOpenModal(true)}
-			open={props.openModal}
+			onClose={() => props.setOpenFormModal(false)}
+			onOpen={() => props.setOpenFormModal(true)}
+			open={props.openFormModal}
 		>
 			<Modal.Header>
 				<SubTitle title={"ワクチン接種体験を共有する"} size={"h3"} />
@@ -251,7 +251,7 @@ const NoteModal = (props) => {
 				</Form>
 			</Modal.Content>
 			<Modal.Actions>
-				<Button color="gray" onClick={() => props.setOpenModal(false)}>
+				<Button color="gray" onClick={() => props.setOpenFormModal(false)}>
 					キャンセル
 				</Button>
 				<Button
@@ -260,7 +260,7 @@ const NoteModal = (props) => {
 					icon="checkmark"
 					onClick={() => {
 						createNote();
-						props.setOpenModal(false);
+						props.setOpenFormModal(false);
 					}}
 					positive
 				/>
@@ -269,4 +269,4 @@ const NoteModal = (props) => {
 	);
 };
 
-export default NoteModal;
+export default NoteFormModal;
