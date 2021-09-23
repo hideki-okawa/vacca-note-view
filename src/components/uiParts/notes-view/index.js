@@ -19,7 +19,7 @@ const NotesView = (props) => {
 			</Grid.Column>
 			<Grid.Column width={12}>
 				<NotesViewList
-					setOpenModal={props.setOpenModal}
+					setOpenFormModal={props.setOpenFormModal}
 					setNotesCount={setNotesCount}
 				/>
 			</Grid.Column>
@@ -28,7 +28,7 @@ const NotesView = (props) => {
 
 	const smpContent = (
 		<NotesViewList
-			setOpenModal={props.setOpenModal}
+			setOpenFormModal={props.setOpenFormModal}
 			setNotesCount={setNotesCount}
 			notesCount={notesCount}
 		/>

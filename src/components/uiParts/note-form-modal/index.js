@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import SubTitle from "~/components/uiParts/sub-title/index.js";
+import NoteCheckModal from "~/components/uiParts/note-check-modal/index.js";
 
 import { Button, Modal, Form } from "semantic-ui-react";
 import axios from "axios";
 
-const NoteModal = (props) => {
+const NoteFormModal = (props) => {
 	const [name, setName] = useState("");
 	const [nameError, setNameError] = useState(false);
 	const [gender, setGender] = useState("1");
@@ -14,7 +15,6 @@ const NoteModal = (props) => {
 	const [maxTemperature, setMaxTemperature] = useState("1");
 	const [log, setLog] = useState("");
 	const [remarks, setRemarks] = useState("");
-	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 
 	// 名前のバリデーションと更新
 	const handleChangeName = (e) => {
@@ -71,45 +71,41 @@ const NoteModal = (props) => {
 		setRemarks(e.target.value);
 	};
 
-	// 体験の登録
-	const createNote = () => {
-		if (name === "") {
-			setName("匿名");
-		}
+	// // 体験の登録
+	// const createNote = () => {
+	// 	const postData = {
+	// 		name: name,
+	// 		gender: gender,
+	// 		age: age,
+	// 		vaccine_type: vaccineType,
+	// 		number_of_vaccination: numberOfVaccination,
+	// 		max_temperature: maxTemperature,
+	// 		log: log,
+	// 		remarks: remarks,
+	// 		good_count: 0,
+	// 	};
 
-		const postData = {
-			name: name,
-			gender: gender,
-			age: age,
-			vaccine_type: vaccineType,
-			number_of_vaccination: numberOfVaccination,
-			max_temperature: maxTemperature,
-			log: log,
-			remarks: remarks,
-			good_count: 0,
-		};
+	// 	const api = process.env.REACT_APP_SERVER_API + "/note";
+	// 	const postRequest = async () => {
+	// 		let token;
+	// 		if (jwt == null) {
+	// 			const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
+	// 			const response = await axios(jwtAPI);
+	// 			setJWT(response.data.token);
+	// 			token = response.data.token;
+	// 			window.localStorage.setItem("jwt", token);
+	// 		} else {
+	// 			token = jwt;
+	// 		}
 
-		const api = process.env.REACT_APP_SERVER_API + "/note";
-		const postRequest = async () => {
-			let token;
-			if (jwt == null) {
-				const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
-				const response = await axios(jwtAPI);
-				setJWT(response.data.token);
-				token = response.data.token;
-				window.localStorage.setItem("jwt", token);
-			} else {
-				token = jwt;
-			}
-
-			// TODO: レスポンスの内容でバリデーションする
-			// const response = await axios.post(api, postData);
-			await axios.post(api, postData, {
-				headers: { Authorization: `Bearer ${token}` },
-			});
-		};
-		postRequest();
-	};
+	// 		// TODO: レスポンスの内容でバリデーションする
+	// 		// const response = await axios.post(api, postData);
+	// 		await axios.post(api, postData, {
+	// 			headers: { Authorization: `Bearer ${token}` },
+	// 		});
+	// 	};
+	// 	postRequest();
+	// };
 
 	const ageOptions = [
 		{ text: "10代以下", value: "1" },
@@ -139,9 +135,9 @@ const NoteModal = (props) => {
 	return (
 		<Modal
 			closeIcon
-			onClose={() => props.setOpenModal(false)}
-			onOpen={() => props.setOpenModal(true)}
-			open={props.openModal}
+			onClose={() => props.setOpenFormModal(false)}
+			onOpen={() => props.setOpenFormModal(true)}
+			open={props.openFormModal}
 		>
 			<Modal.Header>
 				<SubTitle title={"ワクチン接種体験を共有する"} size={"h3"} />
@@ -243,7 +239,7 @@ const NoteModal = (props) => {
 					/>
 					{/* 自由記入欄の入力 */}
 					<Form.TextArea
-						label="自由記入欄"
+						label="自由コメント"
 						placeholder={`準備したもの、後悔したこと、感想など・・・何でもご記入ください！`}
 						value={remarks}
 						onChange={handleChangeRemarks}
@@ -251,22 +247,37 @@ const NoteModal = (props) => {
 				</Form>
 			</Modal.Content>
 			<Modal.Actions>
-				<Button color="gray" onClick={() => props.setOpenModal(false)}>
+				<Button color="gray" onClick={() => props.setOpenFormModal(false)}>
 					キャンセル
 				</Button>
 				<Button
-					content="接種体験を投稿する"
+					content="投稿内容を確認する"
 					labelPosition="right"
 					icon="checkmark"
 					onClick={() => {
-						createNote();
-						props.setOpenModal(false);
+						// createNote();
+						// props.setOpenFormModal(false);
+						props.setOpenCheckModal(true);
 					}}
 					positive
 				/>
 			</Modal.Actions>
+
+			<NoteCheckModal
+				openCheckModal={props.openCheckModal}
+				setOpenCheckModal={props.setOpenCheckModal}
+				setOpenFormModal={props.setOpenFormModal}
+				name={name}
+				gender={gender}
+				age={age}
+				vaccineType={vaccineType}
+				numberOfVaccination={numberOfVaccination}
+				maxTemperature={maxTemperature}
+				log={log}
+				remarks={remarks}
+			/>
 		</Modal>
 	);
 };
 
-export default NoteModal;
+export default NoteFormModal;

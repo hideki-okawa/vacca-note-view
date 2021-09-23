@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import NoteModal from "~/components/uiParts/note-modal/index.js";
+import NoteFormModal from "~/components/uiParts/note-form-modal/index.js";
 import TopView from "~/components/uiParts/top-view/index.js";
 import NotesView from "~/components/uiParts/notes-view/index.js";
 
 const Top = () => {
-	const [openModal, setOpenModal] = useState(false);
+	const [openFormModal, setOpenFormModal] = useState(false);
+	const [openCheckModal, setOpenCheckModal] = useState(false);
 
 	return (
 		<div>
-			<NoteModal openModal={openModal} setOpenModal={setOpenModal} />
-			<TopView setOpenModal={setOpenModal} />
-			<NotesView setOpenModal={setOpenModal} />
+			<NoteFormModal
+				openFormModal={openFormModal}
+				setOpenFormModal={setOpenFormModal}
+				openCheckModal={openCheckModal}
+				setOpenCheckModal={setOpenCheckModal}
+			/>
+			<TopView setOpenFormModal={setOpenFormModal} />
+			<NotesView setOpenFormModal={setOpenFormModal} />
 		</div>
 	);
 };

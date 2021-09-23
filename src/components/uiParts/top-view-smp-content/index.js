@@ -22,7 +22,7 @@ const TopViewSMPContent = (props) => {
 			/>
 			<Header as="h3" content="ワクチンの接種体験を共有しよう。" />
 			<div className="top-view-right-button">
-				<PostButton setOpenModal={props.setOpenModal} />
+				<PostButton setOpenFormModal={props.setOpenFormModal} />
 			</div>
 		</div>
 	);

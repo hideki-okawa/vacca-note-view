@@ -7,7 +7,7 @@ const NotesViewList = (props) => {
 	return (
 		<div>
 			<NotesViewListHeader
-				setOpenModal={props.setOpenModal}
+				setOpenFormModal={props.setOpenFormModal}
 				notesCount={props.notesCount}
 			/>
 			<div className="notes-view-list-content">

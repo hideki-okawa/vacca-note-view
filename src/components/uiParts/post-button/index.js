@@ -14,7 +14,7 @@ const PostButton = (props) => {
 			href="#!"
 			className="post-button"
 			onClick={() => {
-				props.setOpenModal(true);
+				props.setOpenFormModal(true);
 			}}
 		>
 			{isWide ? pcHeader : smpHeader}
