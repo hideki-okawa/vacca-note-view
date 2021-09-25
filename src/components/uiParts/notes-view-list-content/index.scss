@@ -1,4 +1,10 @@
-.note-paragraph {
-	font-size: 16px;
-	line-height: 1.8;
+.note {
+	&-paragraph {
+		font-size: 16px;
+		line-height: 1.8;
+	}
+	&-pagination {
+		margin-top: 3%;
+		text-align: center;
+	}
 }

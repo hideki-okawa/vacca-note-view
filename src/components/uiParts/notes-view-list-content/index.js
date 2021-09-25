@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import NotesViewListContentCard from "~/components/uiParts/notes-view-list-content-card/index.js";
 
-import { Card, Dimmer, Loader } from "semantic-ui-react";
+import { Card, Dimmer, Loader, Pagination } from "semantic-ui-react";
 import axios from "axios";
 import useMedia from "use-media";
 
 const NotesViewListContent = (props) => {
 	const [notes, setNotes] = useState([]);
+	const [numPageCount, setNumPageCount] = useState(1);
+	const [activePage, setActivePage] = useState(1);
 	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 	const [loading, setLoading] = useState(true);
 	const isWide = useMedia({ minWidth: "767px" });
@@ -31,6 +33,7 @@ const NotesViewListContent = (props) => {
 			});
 			setNotes(response.data);
 			props.setNotesCount(response.data.length);
+			setNumPageCount(Math.ceil(response.data.length / 10));
 			setLoading(false);
 		};
 		fetchData();
@@ -49,13 +52,30 @@ const NotesViewListContent = (props) => {
 		loadingComponent = null;
 	}
 
+	const handlePaginationChange = (e, { activePage }) => {
+		setActivePage(activePage);
+	};
+
 	return (
-		<Card.Group itemsPerRow={isWide ? 2 : 1}>
-			{loadingComponent}
-			{notes.map((note) => {
-				return <NotesViewListContentCard note={note} />;
-			})}
-		</Card.Group>
+		<>
+			<Card.Group itemsPerRow={isWide ? 2 : 1}>
+				{loadingComponent}
+				{notes.slice((activePage - 1) * 10, activePage * 10).map((note) => {
+					return <NotesViewListContentCard note={note} />;
+				})}
+			</Card.Group>
+			<div className="note-pagination">
+				<Pagination
+					activePage={activePage}
+					onPageChange={handlePaginationChange}
+					firstItem={null}
+					lastItem={null}
+					pointing
+					secondary
+					totalPages={numPageCount}
+				/>
+			</div>
+		</>
 	);
 };
 
