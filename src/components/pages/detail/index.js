@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import * as constants from "~/constants.js";
 import ReturnOriginalNote from "~/common.js";
 import NoteHeader from "~/components/uiParts/note-header/index.js";
 import NoteContent from "~/components/uiParts/note-content/index.js";
