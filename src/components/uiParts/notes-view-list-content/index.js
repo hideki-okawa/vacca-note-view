@@ -34,7 +34,7 @@ const NotesViewListContent = (props) => {
 			setLoading(false);
 		};
 		fetchData();
-	}, []);
+	}, [props.openFormModal]);
 
 	let loader = (
 		<Dimmer active inverted>
