@@ -16,7 +16,10 @@ const Top = () => {
 				setOpenCheckModal={setOpenCheckModal}
 			/>
 			<TopView setOpenFormModal={setOpenFormModal} />
-			<NotesView setOpenFormModal={setOpenFormModal} />
+			<NotesView
+				openFormModal={openFormModal}
+				setOpenFormModal={setOpenFormModal}
+			/>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SubTitle from "~/components/uiParts/sub-title/index.js";
 import NoteCheckModal from "~/components/uiParts/note-check-modal/index.js";
 
@@ -14,6 +14,18 @@ const NoteFormModal = (props) => {
 	const [maxTemperature, setMaxTemperature] = useState("1");
 	const [log, setLog] = useState("");
 	const [remarks, setRemarks] = useState("");
+
+	useEffect(() => {
+		setName("");
+		setNameError(false);
+		setGender("1");
+		setAge("1");
+		setVaccineType("M");
+		setNumberOfVaccination(1);
+		setMaxTemperature("1");
+		setLog("");
+		setRemarks("");
+	}, [props.openFormModal]);
 
 	// 名前のバリデーションと更新
 	const handleChangeName = (e) => {

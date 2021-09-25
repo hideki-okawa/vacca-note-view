@@ -11,7 +11,10 @@ const NotesViewList = (props) => {
 				notesCount={props.notesCount}
 			/>
 			<div className="notes-view-list-content">
-				<NotesViewListContent setNotesCount={props.setNotesCount} />
+				<NotesViewListContent
+					openFormModal={props.openFormModal}
+					setNotesCount={props.setNotesCount}
+				/>
 			</div>
 		</div>
 	);
