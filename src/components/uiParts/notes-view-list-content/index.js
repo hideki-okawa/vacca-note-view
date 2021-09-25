@@ -54,6 +54,7 @@ const NotesViewListContent = (props) => {
 
 	const handlePaginationChange = (e, { activePage }) => {
 		setActivePage(activePage);
+		window.scrollTo(0, 0);
 	};
 
 	return (
