@@ -3,7 +3,6 @@ import SubTitle from "~/components/uiParts/sub-title/index.js";
 import NoteCheckModal from "~/components/uiParts/note-check-modal/index.js";
 
 import { Button, Modal, Form } from "semantic-ui-react";
-import axios from "axios";
 
 const NoteFormModal = (props) => {
 	const [name, setName] = useState("");
@@ -70,42 +69,6 @@ const NoteFormModal = (props) => {
 		// }
 		setRemarks(e.target.value);
 	};
-
-	// // 体験の登録
-	// const createNote = () => {
-	// 	const postData = {
-	// 		name: name,
-	// 		gender: gender,
-	// 		age: age,
-	// 		vaccine_type: vaccineType,
-	// 		number_of_vaccination: numberOfVaccination,
-	// 		max_temperature: maxTemperature,
-	// 		log: log,
-	// 		remarks: remarks,
-	// 		good_count: 0,
-	// 	};
-
-	// 	const api = process.env.REACT_APP_SERVER_API + "/note";
-	// 	const postRequest = async () => {
-	// 		let token;
-	// 		if (jwt == null) {
-	// 			const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
-	// 			const response = await axios(jwtAPI);
-	// 			setJWT(response.data.token);
-	// 			token = response.data.token;
-	// 			window.localStorage.setItem("jwt", token);
-	// 		} else {
-	// 			token = jwt;
-	// 		}
-
-	// 		// TODO: レスポンスの内容でバリデーションする
-	// 		// const response = await axios.post(api, postData);
-	// 		await axios.post(api, postData, {
-	// 			headers: { Authorization: `Bearer ${token}` },
-	// 		});
-	// 	};
-	// 	postRequest();
-	// };
 
 	const ageOptions = [
 		{ text: "10代以下", value: "1" },
@@ -255,8 +218,6 @@ const NoteFormModal = (props) => {
 					labelPosition="right"
 					icon="checkmark"
 					onClick={() => {
-						// createNote();
-						// props.setOpenFormModal(false);
 						props.setOpenCheckModal(true);
 					}}
 					positive

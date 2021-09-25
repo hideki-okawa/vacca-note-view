@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReturnOriginalNote from "~/common.js";
 
 import { Button, Modal, Table, Header, Message } from "semantic-ui-react";
