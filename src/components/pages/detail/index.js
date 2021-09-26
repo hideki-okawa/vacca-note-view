@@ -39,6 +39,7 @@ const Detail = () => {
 	return (
 		<div>
 			<NoteHeader
+				id={id}
 				age={originalNote.age}
 				gender={originalNote.gender}
 				name={note.name}

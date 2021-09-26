@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
 import thanks from "~/img/vacca-note-thanks.png";
 
@@ -24,7 +24,10 @@ const NoteCheckModal = (props) => {
 						className="note-thanks-modal-image"
 						alt="thanks-image"
 					/>
-					<Header as="h1" content="投稿ありがとうございます！！" />
+					<Header
+						as={isWide ? "h1" : "h3"}
+						content="投稿ありがとうございます！！"
+					/>
 					<p>
 						投稿した接種体験は
 						<Link
@@ -38,7 +41,9 @@ const NoteCheckModal = (props) => {
 					</p>
 					<TwitterShareButton
 						url={[`https://vacca-note.com/note/${props.postNoteNum}`]}
-						title={["ワクチンの接種体験を投稿しました！"]}
+						title={[
+							"Vacca noteでワクチンの接種体験を投稿しました！ - Vacca note",
+						]}
 					>
 						<TwitterIcon size={32} round />
 					</TwitterShareButton>
