@@ -6,6 +6,7 @@ import Detail from "~/components/pages/detail/index.js";
 import Service from "~/components/pages/service/index.js";
 import Privacy from "~/components/pages/privacy/index.js";
 import Contact from "~/components/pages/contact/index.js";
+import NotFound from "~/components/pages/not-found/index.js";
 import Footer from "~/components/uiParts/footer/index.js";
 import ScrollToTop from "~/ScrollToTop.js";
 import { useTracking } from "~/useTracking.ts";
@@ -28,6 +29,7 @@ const App = () => {
 				<Route path="/terms/service" component={Service} />
 				<Route path="/terms/privacy" component={Privacy} />
 				<Route path="/contact" component={Contact} />
+				<Route component={NotFound} />
 			</div>
 			<Button
 				className="angle-up"
