@@ -20,7 +20,7 @@ const NoteHeader = (props) => {
 			>{`${props.age}${props.gender}の接種体験`}</Header>
 			<Header
 				as={isWide ? "h3" : "h4"}
-			>{`${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature}`}</Header>
+			>{`${props.name} ${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature}`}</Header>
 		</div>
 	);
 };
