@@ -1,0 +1,11 @@
+.note-thanks-modal {
+	&-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	&-image {
+		width: 80%;
+	}
+}
