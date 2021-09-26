@@ -33,7 +33,7 @@ const Header = () => {
 				</Menu.Item>
 				<Menu.Item position="right">
 					<div className="sidebar-position">
-						<Icon name="sidebar" />
+						{/* <Icon name="sidebar" /> */}
 					</div>
 				</Menu.Item>
 			</Menu>
