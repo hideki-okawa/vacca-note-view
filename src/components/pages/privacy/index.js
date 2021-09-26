@@ -2,6 +2,7 @@ import React from "react";
 import "./index.scss";
 
 import { Header, List } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import useMedia from "use-media";
 
 const Privacy = () => {
@@ -144,8 +145,10 @@ const Privacy = () => {
 				</List.Item>
 			</List>
 			<Header as="h2">第10条（お問い合わせ窓口）</Header>
-			本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。 ----
-			窓口を貼る ----
+			本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。
+			<br />
+			<Link to={"/contact"}>お問い合わせ先</Link>
+			<br />
 			<br />
 			以上
 		</div>
