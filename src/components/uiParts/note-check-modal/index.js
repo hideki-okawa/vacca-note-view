@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import ReturnOriginalNote from "~/common.js";
 
-import { Button, Modal, Table, Header, Message } from "semantic-ui-react";
+import {
+	Button,
+	Modal,
+	Table,
+	Header,
+	Message,
+	Divider,
+} from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import useMedia from "use-media";
 
@@ -150,11 +158,19 @@ const NoteCheckModal = (props) => {
 						</Table.Row>
 					</Table.Body>
 				</Table>
-				{/* <Message
-					error
-					header="投稿に失敗しました。"
-					content="You can only sign up for an account once with a given e-mail address."
-				/> */}
+				<Divider />
+				<p>
+					<Link to={"/terms/service"} target="_blank">
+						利用規約
+					</Link>
+					に同意した上で投稿してください。
+					<br />
+					一度投稿したらユーザから削除することが出来ません。削除依頼は、
+					<Link to={"/contact"} target="_blank">
+						こちら
+					</Link>
+					からお願いいたします。
+				</p>
 				{errorMessageBox}
 			</Modal.Content>
 			<Modal.Actions>
