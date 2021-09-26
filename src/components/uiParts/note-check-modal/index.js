@@ -70,9 +70,11 @@ const NoteCheckModal = (props) => {
 				.post(api, postData, {
 					headers: { Authorization: `Bearer ${token}` },
 				})
-				.then(function () {
+				.then(function (response) {
 					props.setOpenCheckModal(false);
 					props.setOpenFormModal(false);
+					props.setPostNoteNum(response.data);
+					props.setOpenThanksModal(true);
 				})
 				.catch(function (error) {
 					setErrorMessage(error.response.data);
@@ -160,13 +162,13 @@ const NoteCheckModal = (props) => {
 				</Table>
 				<Divider />
 				<p>
-					<Link to={"/terms/service"} target="_blank">
+					<Link to={"/terms/service"} target="_blank" rel="noopener noreferrer">
 						利用規約
 					</Link>
 					に同意した上で投稿してください。
 					<br />
 					一度投稿したらユーザから削除することが出来ません。削除依頼は、
-					<Link to={"/contact"} target="_blank">
+					<Link to={"/contact"} target="_blank" rel="noopener noreferrer">
 						こちら
 					</Link>
 					からお願いいたします。

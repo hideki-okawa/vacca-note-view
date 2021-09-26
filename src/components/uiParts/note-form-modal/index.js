@@ -240,6 +240,8 @@ const NoteFormModal = (props) => {
 				openCheckModal={props.openCheckModal}
 				setOpenCheckModal={props.setOpenCheckModal}
 				setOpenFormModal={props.setOpenFormModal}
+				setOpenThanksModal={props.setOpenThanksModal}
+				setPostNoteNum={props.setPostNoteNum}
 				name={name}
 				gender={gender}
 				age={age}
