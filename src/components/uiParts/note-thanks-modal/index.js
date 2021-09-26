@@ -24,7 +24,10 @@ const NoteCheckModal = (props) => {
 						className="note-thanks-modal-image"
 						alt="thanks-image"
 					/>
-					<Header as="h1" content="投稿ありがとうございます！！" />
+					<Header
+						as={isWide ? "h1" : "h3"}
+						content="投稿ありがとうございます！！"
+					/>
 					<p>
 						投稿した接種体験は
 						<Link
