@@ -5,6 +5,9 @@ import Top from "~/components/pages/top/index.js";
 import Detail from "~/components/pages/detail/index.js";
 import Service from "~/components/pages/service/index.js";
 import Privacy from "~/components/pages/privacy/index.js";
+import Contact from "~/components/pages/contact/index.js";
+import Footer from "~/components/uiParts/footer/index.js";
+import ScrollToTop from "~/ScrollToTop.js";
 import { useTracking } from "~/useTracking.ts";
 
 import { Route } from "react-router-dom";
@@ -15,6 +18,7 @@ const App = () => {
 
 	return (
 		<div className="App">
+			<ScrollToTop />
 			<div className="title-header">
 				<Header />
 			</div>
@@ -23,6 +27,7 @@ const App = () => {
 				<Route path="/note/:id" component={Detail} />
 				<Route path="/terms/service" component={Service} />
 				<Route path="/terms/privacy" component={Privacy} />
+				<Route path="/contact" component={Contact} />
 			</div>
 			<Button
 				className="angle-up"
@@ -32,6 +37,9 @@ const App = () => {
 				color="grey"
 				onClick={() => window.scrollTo(0, 0)}
 			/>
+			<div className="footer">
+				<Footer />
+			</div>
 		</div>
 	);
 };
