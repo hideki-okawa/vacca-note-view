@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 
-import { Header } from "semantic-ui-react";
+import { Header, Label, Icon } from "semantic-ui-react";
 import useMedia from "use-media";
 
 const Contact = () => {
@@ -12,13 +12,17 @@ const Contact = () => {
 			<Header as="h1">お問合せ先</Header>
 			投稿の削除依頼などの問い合わせは、以下のtwitterアカウントにDMをお願いいたいします。
 			<br />
-			<a
-				href="https://twitter.com/Okend1033"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				@Okend1033
-			</a>
+			<br />
+			<Label as="a" icon color="blue">
+				<Icon name="twitter" />
+				<a
+					href="https://twitter.com/Okend1033"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					@Okend1033
+				</a>
+			</Label>
 		</div>
 	);
 };

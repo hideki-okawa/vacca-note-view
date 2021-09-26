@@ -1,9 +1,7 @@
 import React from "react";
-// import "./index.scss";
 
 import { Segment, Container, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import useMedia from "use-media";
 
 const Footer = () => {
 	return (
