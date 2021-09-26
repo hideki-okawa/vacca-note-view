@@ -3,6 +3,8 @@ import "./App.scss";
 import Header from "~/components/uiParts/header/index.js";
 import Top from "~/components/pages/top/index.js";
 import Detail from "~/components/pages/detail/index.js";
+import Service from "~/components/pages/service/index.js";
+import Privacy from "~/components/pages/privacy/index.js";
 import { useTracking } from "~/useTracking.ts";
 
 import { Route } from "react-router-dom";
@@ -19,6 +21,8 @@ const App = () => {
 			<div className="main-content">
 				<Route exact path="/" component={Top} />
 				<Route path="/note/:id" component={Detail} />
+				<Route path="/terms/service" component={Service} />
+				<Route path="/terms/privacy" component={Privacy} />
 			</div>
 			<Button
 				className="angle-up"
