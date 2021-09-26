@@ -6,11 +6,12 @@ import Detail from "~/components/pages/detail/index.js";
 import Service from "~/components/pages/service/index.js";
 import Privacy from "~/components/pages/privacy/index.js";
 import Contact from "~/components/pages/contact/index.js";
+import NotFound from "~/components/pages/not-found/index.js";
 import Footer from "~/components/uiParts/footer/index.js";
 import ScrollToTop from "~/ScrollToTop.js";
 import { useTracking } from "~/useTracking.ts";
 
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 
 const App = () => {
@@ -23,11 +24,14 @@ const App = () => {
 				<Header />
 			</div>
 			<div className="main-content">
-				<Route exact path="/" component={Top} />
-				<Route path="/note/:id" component={Detail} />
-				<Route path="/terms/service" component={Service} />
-				<Route path="/terms/privacy" component={Privacy} />
-				<Route path="/contact" component={Contact} />
+				<Switch>
+					<Route exact path="/" component={Top} />
+					<Route path="/note/:id" component={Detail} />
+					<Route path="/terms/service" component={Service} />
+					<Route path="/terms/privacy" component={Privacy} />
+					<Route path="/contact" component={Contact} />
+					<Route component={NotFound} />
+				</Switch>
 			</div>
 			<Button
 				className="angle-up"
