@@ -41,7 +41,7 @@ const NoteCheckModal = (props) => {
 					</p>
 					<TwitterShareButton
 						url={[`https://vacca-note.com/note/${props.postNoteNum}`]}
-						title={["ワクチンの接種体験を投稿しました！"]}
+						title={["Vacca noteでワクチンの接種体験を投稿しました！"]}
 					>
 						<TwitterIcon size={32} round />
 					</TwitterShareButton>
