@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import PostButton from "~/components/uiParts/post-button/index.js";
-import SubTitle from "~/components/uiParts/sub-title/index.js";
 
-import { Grid, Label } from "semantic-ui-react";
+import { Grid, Label, Menu } from "semantic-ui-react";
 import useMedia from "use-media";
 
 const NotesViewListHeader = (props) => {
@@ -11,7 +10,18 @@ const NotesViewListHeader = (props) => {
 	const pcContent = (
 		<Grid>
 			<Grid.Column width={8} verticalAlign="middle">
-				<SubTitle title={"ワクチン接種体験"} />
+				<Menu attached="top" tabular>
+					<Menu.Item
+						name="ワクチン接種体験"
+						active={props.activeItem === "ワクチン接種体験"}
+						onClick={() => props.setActiveItem("ワクチン接種体験")}
+					/>
+					<Menu.Item
+						name="統計情報"
+						active={props.activeItem === "統計情報"}
+						onClick={() => props.setActiveItem("統計情報")}
+					/>
+				</Menu>
 			</Grid.Column>
 			<Grid.Column textAlign="right" width={8} verticalAlign="middle">
 				<PostButton setOpenFormModal={props.setOpenFormModal} />
@@ -20,16 +30,25 @@ const NotesViewListHeader = (props) => {
 	);
 
 	const smpContent = (
-		<Grid>
-			<Grid.Column width={12} verticalAlign="middle">
-				<SubTitle size="h2" title={"ワクチン接種体験"} />
-			</Grid.Column>
-			<Grid.Column width={4} verticalAlign="middle">
-				<Label circular color="teal" key="teal" size="large">
+		<Menu attached="top" tabular>
+			<Menu.Item
+				name="ワクチン接種体験"
+				// active={activeItem === "bio"}
+				// onClick={this.handleItemClick}
+				active={true}
+			>
+				ワクチン接種体験
+				<Label circular color="teal" key="teal" size="tiny">
 					{props.notesCount}件
 				</Label>
-			</Grid.Column>
-		</Grid>
+			</Menu.Item>
+			<Menu.Item
+				name="統計情報"
+				// active={activeItem === "photos"}
+				// onClick={this.handleItemClick}
+				active={false}
+			/>
+		</Menu>
 	);
 
 	return <header>{isWide ? pcContent : smpContent}</header>;
