@@ -33,9 +33,8 @@ const NotesViewListHeader = (props) => {
 		<Menu attached="top" tabular>
 			<Menu.Item
 				name="ワクチン接種体験"
-				// active={activeItem === "bio"}
-				// onClick={this.handleItemClick}
-				active={true}
+				active={props.activeItem === "ワクチン接種体験"}
+				onClick={() => props.setActiveItem("ワクチン接種体験")}
 			>
 				ワクチン接種体験
 				<Label circular color="teal" key="teal" size="tiny">
