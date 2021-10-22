@@ -44,9 +44,8 @@ const NotesViewListHeader = (props) => {
 			</Menu.Item>
 			<Menu.Item
 				name="統計情報"
-				// active={activeItem === "photos"}
-				// onClick={this.handleItemClick}
-				active={false}
+				active={props.activeItem === "統計情報"}
+				onClick={() => props.setActiveItem("統計情報")}
 			/>
 		</Menu>
 	);
