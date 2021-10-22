@@ -28,7 +28,10 @@ const NotesCharts = (props) => {
 			{/* {notes.slice((activePage - 1) * 10, activePage * 10).map((note) => {
 				return <NotesViewListContentCard note={note} />;
 			})} */}
-			<NotesChart />
+			<NotesChart title={"ファイザー(2回目)接種後の体温"} />
+			<NotesChart title={"モデルナ(2回目)接種後の体温"} />
+			<NotesChart title={"ファイザー(1回目)接種後の体温"} />
+			<NotesChart title={"モデルナ(1回目)接種後の体温"} />
 		</Card.Group>
 	);
 };

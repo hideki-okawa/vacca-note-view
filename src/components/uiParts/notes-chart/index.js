@@ -1,14 +1,40 @@
 import React, { useCallback, useState } from "react";
 import "./index.scss";
 
-import { PieChart, Pie, Sector, Legend, ResponsiveContainer } from "recharts";
+import {
+	PieChart,
+	Pie,
+	Sector,
+	Legend,
+	ResponsiveContainer,
+	Cell,
+} from "recharts";
 import { Card } from "semantic-ui-react";
 
 const data = [
-	{ name: "Group A", value: 400 },
-	{ name: "Group B", value: 300 },
-	{ name: "Group C", value: 300 },
-	{ name: "Group D", value: 200 },
+	{ name: "不明", value: 400 },
+	{ name: "40℃以上", value: 300 },
+	{ name: "39.5℃~39.9℃", value: 300 },
+	{ name: "39.0℃~39.4℃", value: 200 },
+	{ name: "38.5℃~38.9℃", value: 300 },
+	{ name: "38.0℃~38.4℃", value: 200 },
+	{ name: "37.5℃~37.9℃", value: 300 },
+	{ name: "37.0℃~37.4℃", value: 200 },
+	{ name: "36.9℃以下", value: 300 },
+	{ name: "発熱なしのため未検温", value: 200 },
+];
+
+const COLORS = [
+	"#ACA8A7",
+	"#E8614D",
+	"#FF795C",
+	"#FF8042",
+	"#FF8963",
+	"#FFA56F",
+	"#FFB778",
+	"#FFD284",
+	"#A0DD96",
+	"#00BFA6",
 ];
 
 const renderActiveShape = (props) => {
@@ -24,8 +50,25 @@ const renderActiveShape = (props) => {
 	} = props;
 	return (
 		<>
-			<text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+			<text
+				x={cx}
+				y={cy - 10}
+				dy={8}
+				textAnchor="middle"
+				fill={fill}
+				fontSize={17}
+			>
 				{payload.name}
+			</text>
+			<text
+				x={cx}
+				y={cy + 10}
+				dy={8}
+				textAnchor="middle"
+				fill={fill}
+				fontSize={17}
+			>
+				{payload.value}件
 			</text>
 			<Sector
 				cx={cx}
@@ -40,7 +83,7 @@ const renderActiveShape = (props) => {
 	);
 };
 
-export default function NoteChart() {
+export default function NotesChart(props) {
 	const [activeIndex, setActiveIndex] = useState(-1);
 	const onPieEnter = useCallback(
 		(_, index) => {
@@ -55,8 +98,12 @@ export default function NoteChart() {
 	return (
 		<Card raised>
 			<Card.Content>
-				<Card.Header>モデルナ(2回目)接種後の体温</Card.Header>
-				<ResponsiveContainer className="notes-chart" width={"80%"} height={400}>
+				<Card.Header>{props.title}</Card.Header>
+				<ResponsiveContainer
+					className="notes-chart"
+					width={"100%"}
+					height={400}
+				>
 					<PieChart>
 						<Pie
 							activeIndex={activeIndex}
@@ -64,13 +111,22 @@ export default function NoteChart() {
 							data={data}
 							cx={"50%"}
 							cy={"50%"}
-							innerRadius={60}
-							outerRadius={80}
+							startAngle={0}
+							endAngle={360}
+							innerRadius={70}
+							outerRadius={100}
 							fill="#8884d8"
 							dataKey="value"
 							onMouseEnter={onPieEnter}
 							onMouseLeave={onPieLeave}
-						/>
+						>
+							{data.map((entry, index) => (
+								<Cell
+									key={`cell-${index}`}
+									fill={COLORS[index % COLORS.length]}
+								/>
+							))}
+						</Pie>
 						<Legend />
 					</PieChart>
 				</ResponsiveContainer>
