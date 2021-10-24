@@ -51,16 +51,19 @@ const NotesCharts = (props) => {
 	}
 
 	return (
-		<Card.Group itemsPerRow={isWide ? 2 : 1}>
-			{temperatureList.map((temperatureData) => {
-				return (
-					<NotesChart
-						title={temperatureData.name}
-						temperatureDataList={temperatureData.list}
-					/>
-				);
-			})}
-		</Card.Group>
+		<>
+			{loadingComponent}
+			<Card.Group itemsPerRow={isWide ? 2 : 1}>
+				{temperatureList.map((temperatureData) => {
+					return (
+						<NotesChart
+							title={temperatureData.name}
+							temperatureDataList={temperatureData.list}
+						/>
+					);
+				})}
+			</Card.Group>
+		</>
 	);
 };
 
