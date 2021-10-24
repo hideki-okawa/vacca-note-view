@@ -37,7 +37,7 @@ const ReturnOriginalNote = (note) => {
 		originalNote.numberOfVaccination = "不明";
 	}
 
-	if (note.number_of_vaccination) {
+	if (note.max_temperature) {
 		constants.MAX_TEMPERATURE[note.max_temperature]
 			? (originalNote.maxTemperature =
 					constants.MAX_TEMPERATURE[note.max_temperature])
