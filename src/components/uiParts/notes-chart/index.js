@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "./index.scss";
+import * as constants from "~/constants.js";
 
 import {
 	PieChart,
@@ -10,19 +11,6 @@ import {
 	Cell,
 } from "recharts";
 import { Card } from "semantic-ui-react";
-
-const data = [
-	{ name: "不明", value: 400 },
-	{ name: "40℃以上", value: 300 },
-	{ name: "39.5℃~39.9℃", value: 300 },
-	{ name: "39.0℃~39.4℃", value: 200 },
-	{ name: "38.5℃~38.9℃", value: 300 },
-	{ name: "38.0℃~38.4℃", value: 200 },
-	{ name: "37.5℃~37.9℃", value: 300 },
-	{ name: "37.0℃~37.4℃", value: 200 },
-	{ name: "36.9℃以下", value: 300 },
-	{ name: "発熱なしのため未検温", value: 200 },
-];
 
 const COLORS = [
 	"#ACA8A7",
@@ -85,15 +73,48 @@ const renderActiveShape = (props) => {
 
 export default function NotesChart(props) {
 	const [activeIndex, setActiveIndex] = useState(-1);
+
 	const onPieEnter = useCallback(
 		(_, index) => {
 			setActiveIndex(index);
 		},
 		[setActiveIndex]
 	);
+
 	const onPieLeave = useCallback(() => {
 		setActiveIndex(-1);
 	}, [setActiveIndex]);
+
+	var dataArray = [
+		{ name: "不明", value: 0 },
+		{ name: "40℃以上", value: 0 },
+		{ name: "39.5~39.9℃", value: 0 },
+		{ name: "39.0~39.4℃", value: 0 },
+		{ name: "38.5~38.9℃", value: 0 },
+		{ name: "38.0~38.4℃", value: 0 },
+		{ name: "37.5~37.9℃", value: 0 },
+		{ name: "37.0~37.4℃", value: 0 },
+		{ name: "36.9℃以下", value: 0 },
+		{ name: "発熱なしのため未検温", value: 0 },
+	];
+
+	if (props.temperatureDataList) {
+		props.temperatureDataList.map((temperatureData) => {
+			if (temperatureData.num) {
+				constants.MAX_TEMPERATURE[temperatureData.num]
+					? (temperatureData.name =
+							constants.MAX_TEMPERATURE[temperatureData.num])
+					: (temperatureData.name = "不明");
+			} else {
+				temperatureData.name = "不明";
+			}
+			dataArray.map((data, index) => {
+				if (data.name == temperatureData.name) {
+					dataArray[index].value = temperatureData.count;
+				}
+			});
+		});
+	}
 
 	return (
 		<Card raised>
@@ -108,7 +129,7 @@ export default function NotesChart(props) {
 						<Pie
 							activeIndex={activeIndex}
 							activeShape={renderActiveShape}
-							data={data}
+							data={dataArray}
 							cx={"50%"}
 							cy={"50%"}
 							startAngle={0}
@@ -120,7 +141,7 @@ export default function NotesChart(props) {
 							onMouseEnter={onPieEnter}
 							onMouseLeave={onPieLeave}
 						>
-							{data.map((entry, index) => (
+							{dataArray.map((entry, index) => (
 								<Cell
 									key={`cell-${index}`}
 									fill={COLORS[index % COLORS.length]}
