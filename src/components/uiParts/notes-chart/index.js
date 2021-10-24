@@ -85,7 +85,7 @@ export default function NotesChart(props) {
 		setActiveIndex(-1);
 	}, [setActiveIndex]);
 
-	var dataArray = [
+	var chartData = [
 		{ name: "不明", value: 0 },
 		{ name: "40℃以上", value: 0 },
 		{ name: "39.5~39.9℃", value: 0 },
@@ -108,9 +108,9 @@ export default function NotesChart(props) {
 			} else {
 				temperatureData.name = "不明";
 			}
-			dataArray.map((data, index) => {
-				if (data.name == temperatureData.name) {
-					dataArray[index].value = temperatureData.count;
+			chartData.map((chartCellData, index) => {
+				if (chartCellData.name == temperatureData.name) {
+					chartData[index].value = temperatureData.count;
 				}
 			});
 		});
@@ -129,7 +129,7 @@ export default function NotesChart(props) {
 						<Pie
 							activeIndex={activeIndex}
 							activeShape={renderActiveShape}
-							data={dataArray}
+							data={chartData}
 							cx={"50%"}
 							cy={"50%"}
 							startAngle={0}
@@ -141,7 +141,7 @@ export default function NotesChart(props) {
 							onMouseEnter={onPieEnter}
 							onMouseLeave={onPieLeave}
 						>
-							{dataArray.map((entry, index) => (
+							{chartData.map((entry, index) => (
 								<Cell
 									key={`cell-${index}`}
 									fill={COLORS[index % COLORS.length]}
