@@ -72,7 +72,7 @@ const renderActiveShape = (props) => {
 };
 
 export default function NotesChart(props) {
-	const [activeIndex, setActiveIndex] = useState(-1);
+	const [activeIndex, setActiveIndex] = useState(8);
 
 	const onPieEnter = useCallback(
 		(_, index) => {
