@@ -10,7 +10,7 @@ const Contact = () => {
 	return (
 		<div className={isWide ? "contact-pc" : "contact-smp"}>
 			<Header as="h1">お問合せ先</Header>
-			投稿の削除依頼などの問い合わせは、以下のtwitterアカウントにDMをお願いいたいします。
+			投稿の削除依頼などの問い合わせは、以下のtwitterアカウントにDMをお願いいたします。
 			<br />
 			<br />
 			<Label as="a" icon color="blue">
