@@ -43,8 +43,9 @@ const Detail = () => {
 				age={originalNote.age}
 				gender={originalNote.gender}
 				name={note.name}
-				vaccineType={originalNote.vaccineType}
 				numberOfVaccination={originalNote.numberOfVaccination}
+				vaccineType={originalNote.vaccineType}
+				secondVaccineType={originalNote.secondVaccineType}
 				maxTemperature={originalNote.maxTemperature}
 			/>
 			<NoteContent log={originalNote.log} remarks={originalNote.remarks} />

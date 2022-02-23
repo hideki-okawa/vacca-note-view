@@ -24,6 +24,7 @@ export const VACCINE_TYPE = {
 export const NUMBER_OF_VACCINATION = {
 	1: "1回目",
 	2: "2回目",
+	3: "3回目",
 };
 
 export const MAX_TEMPERATURE = {

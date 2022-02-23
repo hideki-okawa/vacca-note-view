@@ -20,11 +20,11 @@ const NoteHeader = (props) => {
 				as={isWide ? "h1" : "h2"}
 			>{`${props.age}${props.gender}の接種体験`}</Header>
 			<Header as={isWide ? "h3" : "h4"}>
-				{`${props.name} ${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature}`}
+				{`${props.name} ${props.gender}/${props.age}/${props.numberOfVaccination}/${props.vaccineType}/${props.secondVaccineType}(2回目)/${props.maxTemperature}`}
 			</Header>
 			<TwitterShareButton
 				url={[`https://vacca-note.com/note/${props.id}`]}
-				title={`[ワクチン接種体験] ${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature} - Vacca note`}
+				title={`${props.gender}/${props.age}/${props.numberOfVaccination}/${props.vaccineType}/${props.secondVaccineType}(2回目)/${props.maxTemperature} - Vacca note`}
 			>
 				<Icon name="twitter" />
 				Twitterで共有する

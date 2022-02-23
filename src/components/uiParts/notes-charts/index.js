@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import "./index.scss";
 import NotesChart from "~/components/uiParts/notes-chart/index.js";
 
 import { Card, Dimmer, Loader } from "semantic-ui-react";
@@ -27,7 +26,6 @@ const NotesCharts = (props) => {
 
 			const api =
 				process.env.REACT_APP_SERVER_API + "/notes/analysis/temperature";
-			console.log("api-debug", api);
 			const response = await axios.get(api, {
 				headers: { Authorization: `Bearer ${token}` },
 			});
