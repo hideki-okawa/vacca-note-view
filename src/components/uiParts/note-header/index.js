@@ -13,18 +13,23 @@ const NoteHeader = (props) => {
 	let logo;
 	props.gender === "男性" ? (logo = man) : (logo = woman);
 
+	let noteInfo;
+	if (props.numberOfVaccination === "3回目") {
+		noteInfo = `${props.gender}/${props.age}/${props.numberOfVaccination}/${props.vaccineType}/${props.secondVaccineType}(2回目)/${props.maxTemperature}`;
+	} else {
+		noteInfo = `${props.gender}/${props.age}/${props.numberOfVaccination}/${props.vaccineType}/${props.maxTemperature}`;
+	}
+
 	return (
 		<div className="note-header-content">
 			<Image src={logo} size="tiny" verticalAlign="middle" alt="logo" />
 			<Header
 				as={isWide ? "h1" : "h2"}
 			>{`${props.age}${props.gender}の接種体験`}</Header>
-			<Header as={isWide ? "h3" : "h4"}>
-				{`${props.name} ${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature}`}
-			</Header>
+			<Header as={isWide ? "h3" : "h4"}>{`${props.name} ${noteInfo}`}</Header>
 			<TwitterShareButton
 				url={[`https://vacca-note.com/note/${props.id}`]}
-				title={`[ワクチン接種体験] ${props.gender}/${props.age}/${props.vaccineType}/${props.numberOfVaccination}/${props.maxTemperature} - Vacca note`}
+				title={`${noteInfo} - Vacca note`}
 			>
 				<Icon name="twitter" />
 				Twitterで共有する

@@ -99,7 +99,7 @@ export default function NotesChart(props) {
 	];
 
 	if (props.temperatureDataList) {
-		props.temperatureDataList.map((temperatureData) => {
+		props.temperatureDataList.forEach((temperatureData) => {
 			if (temperatureData.num) {
 				constants.MAX_TEMPERATURE[temperatureData.num]
 					? (temperatureData.name =
@@ -108,8 +108,8 @@ export default function NotesChart(props) {
 			} else {
 				temperatureData.name = "不明";
 			}
-			chartData.map((chartCellData, index) => {
-				if (chartCellData.name == temperatureData.name) {
+			chartData.forEach((chartCellData, index) => {
+				if (chartCellData.name === temperatureData.name) {
 					chartData[index].value = temperatureData.count;
 				}
 			});

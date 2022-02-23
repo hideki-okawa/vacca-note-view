@@ -6,7 +6,7 @@ import * as constants from "~/constants.js";
 
 import { Header, Image, Card } from "semantic-ui-react";
 
-const setGender = (genderNum) => {
+const displayGender = (genderNum) => {
 	if (constants.GENDER_TYPE[genderNum]) {
 		return constants.GENDER_TYPE[genderNum];
 	} else {
@@ -14,7 +14,7 @@ const setGender = (genderNum) => {
 	}
 };
 
-const setImage = (genderNum) => {
+const displayImage = (genderNum) => {
 	let image;
 	switch (genderNum) {
 		case "1":
@@ -29,7 +29,7 @@ const setImage = (genderNum) => {
 	return image;
 };
 
-const setAge = (ageNum) => {
+const displayAge = (ageNum) => {
 	if (constants.AGE_TYPE[ageNum]) {
 		return constants.AGE_TYPE[ageNum];
 	} else {
@@ -37,7 +37,7 @@ const setAge = (ageNum) => {
 	}
 };
 
-const setVaccineType = (vaccineTypeSymbol) => {
+const displayVaccineType = (vaccineTypeSymbol) => {
 	if (constants.VACCINE_TYPE[vaccineTypeSymbol]) {
 		return constants.VACCINE_TYPE[vaccineTypeSymbol];
 	} else {
@@ -45,7 +45,7 @@ const setVaccineType = (vaccineTypeSymbol) => {
 	}
 };
 
-const setNumberOfVaccination = (numberOfVaccinationNum) => {
+const displayNumberOfVaccination = (numberOfVaccinationNum) => {
 	if (constants.NUMBER_OF_VACCINATION[numberOfVaccinationNum]) {
 		return constants.NUMBER_OF_VACCINATION[numberOfVaccinationNum];
 	} else {
@@ -53,7 +53,7 @@ const setNumberOfVaccination = (numberOfVaccinationNum) => {
 	}
 };
 
-const setMaxTemperature = (maxTemperatureNum) => {
+const displayMaxTemperature = (maxTemperatureNum) => {
 	if (constants.MAX_TEMPERATURE[maxTemperatureNum]) {
 		return constants.MAX_TEMPERATURE[maxTemperatureNum];
 	} else {
@@ -64,23 +64,36 @@ const setMaxTemperature = (maxTemperatureNum) => {
 const NotesViewListContentCard = (props) => {
 	let note = props.note;
 
+	let noteInfo;
+	if (note.number_of_vaccination === 3) {
+		noteInfo = `${displayGender(note.gender)}/${displayAge(
+			note.age
+		)}/${displayNumberOfVaccination(
+			note.number_of_vaccination
+		)}/${displayVaccineType(note.vaccine_type)}/${
+			displayVaccineType(note.second_vaccine_type) + "(2回目)"
+		}
+		/${displayMaxTemperature(note.max_temperature)}`;
+	} else {
+		noteInfo = `${displayGender(note.gender)}/${displayAge(
+			note.age
+		)}/${displayNumberOfVaccination(
+			note.number_of_vaccination
+		)}/${displayVaccineType(note.vaccine_type)}
+		/${displayMaxTemperature(note.max_temperature)}`;
+	}
+
 	return (
 		<Card raised>
 			<Card.Content>
 				<Header as="h3">
-					<Image src={setImage(note.gender)} />
+					<Image src={displayImage(note.gender)} />
 					<Header.Content>
-						{`${setAge(note.age)}${setGender(note.gender)}の接種体験`}
+						{`${displayAge(note.age)}${displayGender(note.gender)}の接種体験`}
 					</Header.Content>
 				</Header>
 				<Header as="h4">回答者:</Header>
-				<p>
-					{`${setGender(note.gender)}/${setAge(note.age)}/${setVaccineType(
-						note.vaccine_type
-					)}/${setNumberOfVaccination(
-						note.number_of_vaccination
-					)}/${setMaxTemperature(note.max_temperature)}`}
-				</p>
+				<p>{noteInfo}</p>
 				<Header as="h4">経過レポート:</Header>
 				<p>
 					{note.log.split("\n").map((str, index) => (

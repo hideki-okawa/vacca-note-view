@@ -9,8 +9,9 @@ const NoteFormModal = (props) => {
 	const [nameError, setNameError] = useState(false);
 	const [gender, setGender] = useState("1");
 	const [age, setAge] = useState("1");
-	const [vaccineType, setVaccineType] = useState("M");
 	const [numberOfVaccination, setNumberOfVaccination] = useState(1);
+	const [vaccineType, setVaccineType] = useState("M");
+	const [secondVaccineType, setSecondVaccineType] = useState("M");
 	const [maxTemperature, setMaxTemperature] = useState("1");
 	const [log, setLog] = useState("");
 	const [remarks, setRemarks] = useState("");
@@ -60,6 +61,11 @@ const NoteFormModal = (props) => {
 	// 回数の更新
 	const handleChangeNumberOfVaccination = (e, { value }) => {
 		setNumberOfVaccination(value);
+	};
+
+	// 回数の更新
+	const handleSecondVaccineType = (e, { value }) => {
+		setSecondVaccineType(value);
 	};
 
 	// 接種体験の更新
@@ -158,6 +164,28 @@ const NoteFormModal = (props) => {
 						placeholder="年齢"
 						onChange={handleChangeAge}
 					/>
+					{/* 回数の入力 */}
+					<Form.Group inline>
+						<label>接種回数</label>
+						<Form.Radio
+							label="1回目"
+							value={1}
+							checked={numberOfVaccination === 1}
+							onChange={handleChangeNumberOfVaccination}
+						/>
+						<Form.Radio
+							label="2回目"
+							value={2}
+							checked={numberOfVaccination === 2}
+							onChange={handleChangeNumberOfVaccination}
+						/>
+						<Form.Radio
+							label="3回目"
+							value={3}
+							checked={numberOfVaccination === 3}
+							onChange={handleChangeNumberOfVaccination}
+						/>
+					</Form.Group>
 					{/* 性別の入力 */}
 					<Form.Group inline required>
 						<label>ワクチンの種類</label>
@@ -180,20 +208,29 @@ const NoteFormModal = (props) => {
 							onChange={handleChangeVaccineType}
 						/>
 					</Form.Group>
-					{/* 回数の入力 */}
-					<Form.Group inline>
-						<label>接種回数</label>
+					{/* 2回目のワクチンの種類(3回目限定) */}
+					<Form.Group inline required>
+						<label>2回目のワクチンの種類 (3回目限定)</label>
 						<Form.Radio
-							label="1回目"
-							value={1}
-							checked={numberOfVaccination === 1}
-							onChange={handleChangeNumberOfVaccination}
+							label="モデルナ"
+							value="M"
+							checked={secondVaccineType === "M"}
+							onChange={handleSecondVaccineType}
+							disabled={numberOfVaccination === 3 ? false : true}
 						/>
 						<Form.Radio
-							label="2回目"
-							value={2}
-							checked={numberOfVaccination === 2}
-							onChange={handleChangeNumberOfVaccination}
+							label="ファイザー"
+							value="F"
+							checked={secondVaccineType === "F"}
+							onChange={handleSecondVaccineType}
+							disabled={numberOfVaccination === 3 ? false : true}
+						/>
+						<Form.Radio
+							label="アストラゼネカ"
+							value="A"
+							checked={secondVaccineType === "A"}
+							onChange={handleSecondVaccineType}
+							disabled={numberOfVaccination === 3 ? false : true}
 						/>
 					</Form.Group>
 					{/* 最高体温の入力 */}
@@ -208,14 +245,14 @@ const NoteFormModal = (props) => {
 					{/* 接種体験の入力 */}
 					<Form.TextArea
 						label="経過記録"
-						placeholder={`1時間後 左腕に痛み\n1日後 マシになった`}
+						placeholder={`1時間後 左腕に若干の痺れを感じる\n3時間後 37.5℃の発熱\n...`}
 						value={log}
 						onChange={handleChangeLog}
 					/>
 					{/* 自由記入欄の入力 */}
 					<Form.TextArea
 						label="自由コメント"
-						placeholder={`準備したもの、後悔したこと、感想など・・・何でもご記入ください！`}
+						placeholder={`事前に準備してよかったもの、後悔したこと、感想など...\n何でもご記入ください。`}
 						value={remarks}
 						onChange={handleChangeRemarks}
 					/>
@@ -245,8 +282,9 @@ const NoteFormModal = (props) => {
 				name={name}
 				gender={gender}
 				age={age}
-				vaccineType={vaccineType}
 				numberOfVaccination={numberOfVaccination}
+				vaccineType={vaccineType}
+				secondVaccineType={secondVaccineType}
 				maxTemperature={maxTemperature}
 				log={log}
 				remarks={remarks}

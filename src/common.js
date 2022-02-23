@@ -20,14 +20,6 @@ const ReturnOriginalNote = (note) => {
 		originalNote.age = "不明";
 	}
 
-	if (note.vaccine_type) {
-		constants.VACCINE_TYPE[note.vaccine_type]
-			? (originalNote.vaccineType = constants.VACCINE_TYPE[note.vaccine_type])
-			: (originalNote.vaccineType = "不明");
-	} else {
-		originalNote.vaccineType = "不明";
-	}
-
 	if (note.number_of_vaccination) {
 		constants.NUMBER_OF_VACCINATION[note.number_of_vaccination]
 			? (originalNote.numberOfVaccination =
@@ -36,6 +28,30 @@ const ReturnOriginalNote = (note) => {
 	} else {
 		originalNote.numberOfVaccination = "不明";
 	}
+
+	if (note.vaccine_type) {
+		constants.VACCINE_TYPE[note.vaccine_type]
+			? (originalNote.vaccineType = constants.VACCINE_TYPE[note.vaccine_type])
+			: (originalNote.vaccineType = "不明");
+	} else {
+		originalNote.vaccineType = "不明";
+	}
+
+	if (note.second_vaccine_type) {
+		if (note.number_of_vaccination === 3) {
+			constants.VACCINE_TYPE[note.second_vaccine_type]
+				? (originalNote.secondVaccineType =
+						constants.VACCINE_TYPE[note.second_vaccine_type])
+				: (originalNote.secondVaccineType = "不明");
+		} else {
+			originalNote.secondVaccineType = "-";
+		}
+	} else {
+		originalNote.secondVaccineType = "不明";
+	}
+	console.log("---");
+	console.log("note", note);
+	console.log("originalNote", originalNote);
 
 	if (note.max_temperature) {
 		constants.MAX_TEMPERATURE[note.max_temperature]

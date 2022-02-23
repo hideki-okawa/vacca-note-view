@@ -22,8 +22,9 @@ const NoteCheckModal = (props) => {
 	let note = {
 		gender: props.gender,
 		age: props.age,
-		vaccine_type: props.vaccineType,
 		number_of_vaccination: props.numberOfVaccination,
+		vaccine_type: props.vaccineType,
+		second_vaccine_type: props.secondVaccineType,
 		max_temperature: props.maxTemperature,
 		log: props.log,
 		remarks: props.remarks,
@@ -39,11 +40,17 @@ const NoteCheckModal = (props) => {
 
 	// 体験の登録
 	const createNote = () => {
+		let second_vaccine_type;
+		props.numberOfVaccination === 3
+			? (second_vaccine_type = props.secondVaccineType)
+			: (second_vaccine_type = "");
+
 		const postData = {
 			name: name,
 			gender: props.gender,
 			age: props.age,
 			vaccine_type: props.vaccineType,
+			second_vaccine_type: second_vaccine_type,
 			number_of_vaccination: props.numberOfVaccination,
 			max_temperature: props.maxTemperature,
 			log: props.log,
@@ -130,16 +137,27 @@ const NoteCheckModal = (props) => {
 						</Table.Row>
 						<Table.Row>
 							<Table.Cell>
-								<Header as={isWide ? "h4" : "h5"} content="ワクチンの種類" />
-							</Table.Cell>
-							<Table.Cell>{originalNote.vaccineType}</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>
 								<Header as={isWide ? "h4" : "h5"} content="接種回数" />
 							</Table.Cell>
 							<Table.Cell>{originalNote.numberOfVaccination}</Table.Cell>
 						</Table.Row>
+						<Table.Row>
+							<Table.Cell>
+								<Header as={isWide ? "h4" : "h5"} content="ワクチンの種類" />
+							</Table.Cell>
+							<Table.Cell>{originalNote.vaccineType}</Table.Cell>
+						</Table.Row>
+						{originalNote.numberOfVaccination === "3回目" && (
+							<Table.Row>
+								<Table.Cell>
+									<Header
+										as={isWide ? "h4" : "h5"}
+										content="2回目のワクチンの種類 (3回目限定)"
+									/>
+								</Table.Cell>
+								<Table.Cell>{originalNote.secondVaccineType}</Table.Cell>
+							</Table.Row>
+						)}
 						<Table.Row>
 							<Table.Cell>
 								<Header as={isWide ? "h4" : "h5"} content="最高体温" />

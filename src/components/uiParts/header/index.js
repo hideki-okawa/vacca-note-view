@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 import logo from "~/img/vacca-note-logo.png";
 
-import { Icon, Image, Menu } from "semantic-ui-react";
+import { Image, Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import useMedia from "use-media";
 

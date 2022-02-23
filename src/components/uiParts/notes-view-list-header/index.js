@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PostButton from "~/components/uiParts/post-button/index.js";
 
 import { Grid, Label, Menu } from "semantic-ui-react";
