@@ -64,6 +64,25 @@ const displayMaxTemperature = (maxTemperatureNum) => {
 const NotesViewListContentCard = (props) => {
 	let note = props.note;
 
+	let noteInfo;
+	if (note.number_of_vaccination === 3) {
+		noteInfo = `${displayGender(note.gender)}/${displayAge(
+			note.age
+		)}/${displayNumberOfVaccination(
+			note.number_of_vaccination
+		)}/${displayVaccineType(note.vaccine_type)}/${
+			displayVaccineType(note.second_vaccine_type) + "(2回目)"
+		}
+		/${displayMaxTemperature(note.max_temperature)}`;
+	} else {
+		noteInfo = `${displayGender(note.gender)}/${displayAge(
+			note.age
+		)}/${displayNumberOfVaccination(
+			note.number_of_vaccination
+		)}/${displayVaccineType(note.vaccine_type)}
+		/${displayMaxTemperature(note.max_temperature)}`;
+	}
+
 	return (
 		<Card raised>
 			<Card.Content>
@@ -74,16 +93,7 @@ const NotesViewListContentCard = (props) => {
 					</Header.Content>
 				</Header>
 				<Header as="h4">回答者:</Header>
-				<p>
-					{`${displayGender(note.gender)}/${displayAge(
-						note.age
-					)}/${displayNumberOfVaccination(
-						note.number_of_vaccination
-					)}/${displayVaccineType(note.vaccine_type)}/${
-						displayVaccineType(note.second_vaccine_type) + "(2回目)"
-					}
-					/${displayMaxTemperature(note.max_temperature)}`}
-				</p>
+				<p>{noteInfo}</p>
 				<Header as="h4">経過レポート:</Header>
 				<p>
 					{note.log.split("\n").map((str, index) => (

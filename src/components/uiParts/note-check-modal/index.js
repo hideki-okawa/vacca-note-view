@@ -40,11 +40,17 @@ const NoteCheckModal = (props) => {
 
 	// 体験の登録
 	const createNote = () => {
+		let second_vaccine_type;
+		props.numberOfVaccination === 3
+			? (second_vaccine_type = props.secondVaccineType)
+			: (second_vaccine_type = "");
+
 		const postData = {
 			name: name,
 			gender: props.gender,
 			age: props.age,
 			vaccine_type: props.vaccineType,
+			second_vaccine_type: second_vaccine_type,
 			number_of_vaccination: props.numberOfVaccination,
 			max_temperature: props.maxTemperature,
 			log: props.log,
