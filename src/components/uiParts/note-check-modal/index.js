@@ -17,6 +17,7 @@ const NoteCheckModal = (props) => {
 	const isWide = useMedia({ minWidth: "767px" });
 	const [isPostError, setIsPostError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [isDisabled, setIsDisabled] = useState(false);
 	const [jwt, setJWT] = useState(localStorage.getItem("jwt"));
 
 	let note = {
@@ -60,6 +61,7 @@ const NoteCheckModal = (props) => {
 
 		const api = process.env.REACT_APP_SERVER_API + "/note";
 		const postRequest = async () => {
+			setIsDisabled(true);
 			let token;
 			if (jwt == null) {
 				const jwtAPI = process.env.REACT_APP_SERVER_API + "/auth";
@@ -86,6 +88,7 @@ const NoteCheckModal = (props) => {
 				.catch(function (error) {
 					setErrorMessage(error.response.data);
 					setIsPostError(true);
+					setIsDisabled(false);
 				});
 		};
 		postRequest();
@@ -205,6 +208,7 @@ const NoteCheckModal = (props) => {
 						createNote();
 					}}
 					positive
+					disabled={isDisabled}
 				/>
 			</Modal.Actions>
 		</Modal>

@@ -14,7 +14,9 @@ const NoteFormModal = (props) => {
 	const [secondVaccineType, setSecondVaccineType] = useState("M");
 	const [maxTemperature, setMaxTemperature] = useState("1");
 	const [log, setLog] = useState("");
+	const [logError, setLogError] = useState(false);
 	const [remarks, setRemarks] = useState("");
+	const [remarksError, setRemarksError] = useState(false);
 
 	useEffect(() => {
 		setName("");
@@ -25,7 +27,9 @@ const NoteFormModal = (props) => {
 		setNumberOfVaccination(1);
 		setMaxTemperature("1");
 		setLog("");
+		setLogError(false);
 		setRemarks("");
+		setRemarksError(false);
 	}, [props.openFormModal]);
 
 	// 名前のバリデーションと更新
@@ -70,21 +74,21 @@ const NoteFormModal = (props) => {
 
 	// 接種体験の更新
 	const handleChangeLog = (e) => {
-		// if (e.target.value.length > 1000) {
-		// 	setNameError("1000文字以下の名前を入力してください。");
-		// } else {
-		// 	setNameError(false);
-		// }
+		if (e.target.value.length > 3000) {
+			setLogError("3000文字以下の名前を入力してください。");
+		} else {
+			setLogError(false);
+		}
 		setLog(e.target.value);
 	};
 
 	// 自由記入欄の更新
 	const handleChangeRemarks = (e) => {
-		// if (e.target.value.length > 1000) {
-		// 	setNameError("1000文字以下の名前を入力してください。");
-		// } else {
-		// 	setNameError(false);
-		// }
+		if (e.target.value.length > 3000) {
+			setRemarksError("3000文字以下の名前を入力してください。");
+		} else {
+			setRemarksError(false);
+		}
 		setRemarks(e.target.value);
 	};
 
@@ -245,6 +249,7 @@ const NoteFormModal = (props) => {
 					{/* 接種体験の入力 */}
 					<Form.TextArea
 						label="経過記録"
+						error={logError}
 						placeholder={`1時間後 左腕に若干の痺れを感じる\n3時間後 37.5℃の発熱\n...`}
 						value={log}
 						onChange={handleChangeLog}
@@ -252,6 +257,7 @@ const NoteFormModal = (props) => {
 					{/* 自由記入欄の入力 */}
 					<Form.TextArea
 						label="自由コメント"
+						error={remarksError}
 						placeholder={`事前に準備してよかったもの、後悔したこと、感想など...\n何でもご記入ください。`}
 						value={remarks}
 						onChange={handleChangeRemarks}
@@ -270,6 +276,7 @@ const NoteFormModal = (props) => {
 						props.setOpenCheckModal(true);
 					}}
 					positive
+					disabled={nameError || logError || remarksError}
 				/>
 			</Modal.Actions>
 
