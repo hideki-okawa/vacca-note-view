@@ -23,7 +23,7 @@ const Footer = () => {
 					</List.Item>
 				</List>
 				<p>
-					Copyright © 2021
+					Copyright © 2022
 					<a
 						href="https://twitter.com/Okend1033"
 						target="_blank"
