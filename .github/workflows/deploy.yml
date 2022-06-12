@@ -11,7 +11,7 @@ env:
 
 jobs:
   deploy:
-    name: Deploay view to Fargate
+    name: Deploay view to S3
     
     runs-on: ubuntu-latest
     
@@ -47,7 +47,6 @@ jobs:
       - name: CloudFront Cache Clear
         run: |
           CFID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${{ secrets.AWS_S3_BUCKET_NAME }}.s3')] | [0].Id" | sed 's/"//g')
-          echo "aws cloudfront create-invalidation ${ secrets.AWS_DISTRIBUTION  }"
           aws cloudfront create-invalidation --distribution-id ${ secrets.AWS_DISTRIBUTION } --paths "/*"
 
 
