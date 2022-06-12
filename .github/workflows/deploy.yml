@@ -8,7 +8,6 @@ on:
 env:
   AWS_REGION: ap-northeast-1
   SYSTEM_NAME: vacca-note
-  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   deploy:
@@ -45,13 +44,11 @@ jobs:
         run: |
           aws s3 cp ./build s3://${{ secrets.AWS_S3_BUCKET_NAME }} --recursive
         
-      - name: Invalidation to cloudfront
-        uses: chetan/invalidate-cloudfront-action@master
-        env:
-          DISTRIBUTION: ${{ secrets.AWS_DISTRIBUTION }}
-          PATHS: '/*'
-          AWS_REGION: 'ap-northeast-1'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: CloudFront Cache Clear
+        run: |
+          CFID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${{ secrets.AWS_S3_BUCKET_NAME }}.s3')] | [0].Id" | sed 's/"//g')
+          echo "aws cloudfront create-invalidation ${ secrets.AWS_DISTRIBUTION  }"
+          aws cloudfront create-invalidation --distribution-id ${ secrets.AWS_DISTRIBUTION } --paths "/*"
+
 
 
