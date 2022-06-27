@@ -1,4 +1,5 @@
 # vacca-note-view
+![example workflow](https://github.com/Okaki030/vacca-note-view/actions/workflows/deploy.yml/badge.svg)
 
 Vacca note's view repository.
 
