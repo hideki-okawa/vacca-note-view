@@ -49,9 +49,6 @@ const ReturnOriginalNote = (note) => {
 	} else {
 		originalNote.secondVaccineType = "不明";
 	}
-	console.log("---");
-	console.log("note", note);
-	console.log("originalNote", originalNote);
 
 	if (note.max_temperature) {
 		constants.MAX_TEMPERATURE[note.max_temperature]
